@@ -1,11 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import store from './store';
 import ConnectionsComponent from './component';
+import GlobalContext from '../../global-context';
+
+import {SELECT_CONNECTION} from '../../actions';
 
 // -----------------------------------------------------------------------------
 
 const ConnectionsContainer = () => {
-  const [props, setProps] = useState();
+  const [props, setProps] = useState({connections: {}});
 
   useEffect(() => {
     console.log('connection container mounted: loading connections');
@@ -27,8 +30,25 @@ const ConnectionsContainer = () => {
     store.subscribe(mapStateToProps);
   }, []);
 
+  // -------------------------------------------------
   console.log('✨ rendering ConnectionsContainer', props);
-  return <ConnectionsComponent {...props} />;
+
+  const {dispatch} = useContext(GlobalContext);
+  const {connections} = props;
+
+  const selectConnection = id => () => {
+    dispatch({
+      type: SELECT_CONNECTION,
+      connectionId: id
+    });
+  };
+
+  return (
+    <ConnectionsComponent
+      selectConnection={selectConnection}
+      connections={connections}
+    />
+  );
 };
 
 export default ConnectionsContainer;

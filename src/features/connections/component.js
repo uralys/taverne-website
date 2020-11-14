@@ -1,8 +1,5 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import styled, {css} from 'styled-components';
-import GlobalContext from '../../global-context';
-
-import {SELECT_CONNECTION} from '../../actions';
 
 const StyledConnection = styled.div`
   color: #fff;
@@ -15,26 +12,20 @@ const StyledConnection = styled.div`
 
 const Connection = props => {
   const {
-    connection: {id, color}
+    connection: {id, color},
+    selectConnection
   } = props;
-
-  const {dispatch} = useContext(GlobalContext);
-  const selectConnection = () => {
-    dispatch({
-      type: SELECT_CONNECTION
-    });
-  };
 
   console.log('✨ rendering Connection', id);
   return (
-    <StyledConnection onClick={selectConnection} color={color}>
+    <StyledConnection onClick={selectConnection(id)} color={color}>
       {id}
     </StyledConnection>
   );
 };
 
 const ConnectionsComponent = props => {
-  const {connections = {}} = props;
+  const {connections = {}, selectConnection} = props;
   const keys = Object.keys(connections);
 
   console.log('✨ rendering ConnectionsComponent', props);
@@ -43,7 +34,11 @@ const ConnectionsComponent = props => {
       <p>Connections:</p>
       {keys.length === 0 && <p>none.</p>}
       {keys.map(key => (
-        <Connection key={key} connection={connections[key]} />
+        <Connection
+          key={key}
+          connection={connections[key]}
+          selectConnection={selectConnection}
+        />
       ))}
     </>
   );
