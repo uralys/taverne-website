@@ -1,10 +1,11 @@
 import 'regenerator-runtime/runtime';
 import React from 'react';
 import {render} from 'react-dom';
+import App from './app';
 
 // -----------------------------------------------------------------------------
 
-const random1To = (n) => Math.floor(Math.random() * n) + 1;
+const random1To = n => Math.floor(Math.random() * n) + 1;
 const randomColor = () => `#${random1To(9)}${random1To(9)}${random1To(9)}`;
 
 // -----------------------------------------------------------------------------
@@ -22,41 +23,41 @@ const rangeDevices = [...Array(nbDevicesPerConnection).keys()];
 // -----------------------------------------------------------------------------
 
 const CONFIG = {
-  connections: rangeConnections.map((c) => ({
+  connections: rangeConnections.map(c => ({
     id: `connection-${c}`,
     color: randomColor(),
-    devices: rangeDevices.map((d) => ({
+    devices: rangeDevices.map(d => ({
       id: `device-${c}-${d}`,
-      color: randomColor(),
-    })),
+      color: randomColor()
+    }))
   })),
-  buildings: rangeBuildings.map((b) => ({
+  buildings: rangeBuildings.map(b => ({
     id: `building-${b}`,
     color: randomColor(),
-    levels: rangeLevels.map((l) => ({
+    levels: rangeLevels.map(l => ({
       id: `level-${b}-${l}`,
-      color: randomColor(),
-    })),
-  })),
+      color: randomColor()
+    }))
+  }))
 };
 
 console.log(CONFIG);
 
 // -----------------------------------------------------------------------------
 
-const App = (options = {}) => {
+const createApp = (options = {}) => {
   if (!options.container) {
     console.error('[App] Requires a container.');
   }
 
   const container = document.getElementById(options.container);
-  render(<div>your app!</div>, container);
+  render(<App />, container);
 };
 
 // -----------------------------------------------------------------------------
 
-if (window && !window.App) {
-  window.App = App;
+if (window && !window.createApp) {
+  window.createApp = createApp;
 }
 
-export default App;
+export default createApp;
