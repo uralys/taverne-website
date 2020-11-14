@@ -10,14 +10,14 @@ import {LOAD_CONNECTIONS, SELECT_CONNECTION} from '../../actions';
 // -----------------------------------------------------------------------------
 
 const ConnectionsContainer = () => {
-  const [props, setProps] = useState({connections: {}});
+  const [props, setProps] = useState({});
   const {dispatch} = useContext(GlobalContext);
-  const {connections} = props;
+  const {connections = {}} = props;
 
   useLayoutEffect(() => {
     console.log('connection container subscribes to store events');
     const mapStateToProps = (state, action) => {
-      setProps(state);
+      setProps({connections: state.connections});
     };
 
     store.subscribe(mapStateToProps);

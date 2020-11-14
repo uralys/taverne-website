@@ -7,7 +7,7 @@ const randomColor = () => `#${random1To(9)}${random1To(9)}${random1To(9)}`;
 
 const nbBuildings = 10;
 const nbLevelsPerBuilding = 20;
-const nbConnections = 10;
+const nbConnections = 2000;
 const nbDevicesPerConnection = 20;
 
 const rangeBuildings = [...Array(nbBuildings).keys()];

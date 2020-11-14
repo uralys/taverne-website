@@ -1,28 +1,35 @@
-import React from 'react';
-import styled, {css} from 'styled-components';
+import React, {memo} from 'react';
+import styled from 'styled-components';
 
-const StyledConnection = styled.div`
+const StyledConnection = styled.div.attrs(props => ({
+  style: {
+    backgroundColor: props.color
+  }
+}))`
   color: #fff;
   height: 100px;
-
-  ${props => css`
-    background-color: ${props.color};
-  `};
 `;
 
-const Connection = props => {
+const _Connection = props => {
   const {
-    connection: {id, color},
+    connection: {id, color, selected},
     selectConnection
   } = props;
 
   console.log('✨ rendering Connection', id);
   return (
     <StyledConnection onClick={selectConnection(id)} color={color}>
-      {id}
+      {id} {selected && '*'}
     </StyledConnection>
   );
 };
+
+const Connection = memo(_Connection, (prevProps, nextProps) => {
+  return (
+    prevProps.connection.color === nextProps.connection.color &&
+    prevProps.connection.selected === nextProps.connection.selected
+  );
+});
 
 const ConnectionsComponent = props => {
   const {connections = {}, selectConnection} = props;
