@@ -1,3 +1,5 @@
+console.log('creating Connections store');
+
 const initialState = {};
 
 // -----------------------------------------------------------------------------
@@ -9,7 +11,7 @@ const ACTIONS = {
 
 // -----------------------------------------------------------------------------
 
-const listeners = [];
+const subscriptions = [];
 let state = initialState;
 
 // -----------------------------------------------------------------------------
@@ -39,15 +41,15 @@ const dispatch = action => {
     default:
   }
 
-  listeners.forEach(listener => {
-    listener.onDispatch(state, action);
+  subscriptions.forEach(subscription => {
+    subscription(state, action);
   });
 };
 
 // -----------------------------------------------------------------------------
 
-const addListener = listener => listeners.push(listener);
+const subscribe = subscription => subscriptions.push(subscription);
 
 // -----------------------------------------------------------------------------
 
-export {dispatch, addListener};
+export default {dispatch, subscribe};

@@ -41,11 +41,13 @@ const CONFIG = {
   }))
 };
 
-console.log(CONFIG);
+console.log({CONFIG});
+window.CONFIG = CONFIG;
 
 // -----------------------------------------------------------------------------
 
 const createApp = (options = {}) => {
+  console.log('👨‍🚀 creating App', options);
   if (!options.container) {
     console.error('[App] Requires a container.');
   }

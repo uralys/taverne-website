@@ -12,6 +12,7 @@
     "react/prop-types": "off"
   },
   "globals": {
+    "CONFIG": false,
     "fetch": false
   },
   "settings": {

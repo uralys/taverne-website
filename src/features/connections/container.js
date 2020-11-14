@@ -1,13 +1,33 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import store from './store';
 import ConnectionsComponent from './component';
 
-const defaultProps = {connections: []};
+// -----------------------------------------------------------------------------
 
 const ConnectionsContainer = () => {
-  const [props, setProps] = useState(defaultProps);
+  const [props, setProps] = useState();
 
-  console.log(props);
+  useEffect(() => {
+    console.log('connection container mounted: loading connections');
+    const connections = CONFIG.connections.reduce((acc, _connection) => {
+      const {devices, ...content} = _connection;
+      return {
+        ...acc,
+        [_connection.id]: content
+      };
+    }, {});
+
+    setProps({connections});
+
+    console.log('connection container subscribes to store events');
+    const mapStateToProps = (state, action) => {
+      setProps(state);
+    };
+
+    store.subscribe(mapStateToProps);
+  }, []);
+
+  console.log('✨ rendering ConnectionsContainer', props);
   return <ConnectionsComponent {...props} />;
 };
 
