@@ -1,11 +1,36 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import styled, {css} from 'styled-components';
+import GlobalContext from '../../global-context';
+
+import {SELECT_CONNECTION} from '../../actions';
+
+const StyledConnection = styled.div`
+  color: #fff;
+  height: 100px;
+
+  ${props => css`
+    background-color: ${props.color};
+  `};
+`;
 
 const Connection = props => {
   const {
     connection: {id, color}
   } = props;
+
+  const {dispatch} = useContext(GlobalContext);
+  const selectConnection = () => {
+    dispatch({
+      type: SELECT_CONNECTION
+    });
+  };
+
   console.log('✨ rendering Connection', id);
-  return <div>{id}</div>;
+  return (
+    <StyledConnection onClick={selectConnection} color={color}>
+      {id}
+    </StyledConnection>
+  );
 };
 
 const ConnectionsComponent = props => {

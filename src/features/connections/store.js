@@ -1,13 +1,19 @@
-console.log('creating Connections store');
+import {
+  ADD_CONNECTION,
+  SET_CONNECTION_COLOR,
+  SELECT_CONNECTION
+} from '../../actions';
 
-const initialState = {};
+console.log('creating Connections store');
 
 // -----------------------------------------------------------------------------
 
-const ACTIONS = {
-  ADD_CONNECTION: 'addConnection',
-  SET_COLOR: 'setColor'
-};
+const initialState = {};
+const handledActions = [
+  ADD_CONNECTION,
+  SET_CONNECTION_COLOR,
+  SELECT_CONNECTION
+];
 
 // -----------------------------------------------------------------------------
 
@@ -16,9 +22,14 @@ let state = initialState;
 
 // -----------------------------------------------------------------------------
 
-const dispatch = action => {
+const onDispatch = action => {
+  if (handledActions.includes(action.type)) {
+    console.log(`   connection store doesnt handle ${action.type}`);
+    return;
+  }
+
   switch (action.type) {
-    case ACTIONS.ADD_CONNECTION: {
+    case ADD_CONNECTION: {
       const {connection} = action;
       state = {
         ...state,
@@ -26,7 +37,7 @@ const dispatch = action => {
       };
       break;
     }
-    case ACTIONS.SET_COLOR: {
+    case SET_CONNECTION_COLOR: {
       const {connectionId, color} = action;
       const currentConnection = state[connectionId];
       state = {
@@ -52,4 +63,4 @@ const subscribe = subscription => subscriptions.push(subscription);
 
 // -----------------------------------------------------------------------------
 
-export default {dispatch, subscribe};
+export default {subscribe};
