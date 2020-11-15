@@ -1,6 +1,10 @@
 import React, {createContext, useContext} from 'react';
 
+// -----------------------------------------------------------------------------
+
 const DispatcherContext = createContext();
+
+// -----------------------------------------------------------------------------
 
 function useDispatcher() {
   const context = useContext(DispatcherContext);
@@ -11,6 +15,8 @@ function useDispatcher() {
 
   return context;
 }
+
+// -----------------------------------------------------------------------------
 
 function DispatcherProvider(props) {
   const listeners = [];
@@ -36,24 +42,3 @@ function DispatcherProvider(props) {
 export {DispatcherProvider, useDispatcher};
 
 // -----------------------------------------------------------------------------
-
-// const createGlobalContext = () => {
-//   const listeners = [];
-
-//   const addActionsListener = listener => listeners.push(listener);
-
-//   const dispatch = action => {
-//     console.log('dispatching', action);
-//     listeners.forEach(listener => {
-//       listener.onDispatch(action);
-//     });
-//   };
-
-//   // const context = React.createContext({addActionsListener, dispatch});
-//   const context = {addActionsListener, dispatch};
-//   return context;
-// };
-
-// // -----------------------------------------------------------------------------
-
-// export default createGlobalContext;
