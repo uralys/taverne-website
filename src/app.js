@@ -1,30 +1,21 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import ConnectionsContainer from './features/connections/container';
-import connectionsStore from './features/connections/store';
-import GlobalContext from './global-context';
+// import {createStores} from './master';
+// import createGlobalContext from './global-context';
 
-const createStores = addActionsListener => {
-  console.log('creating stores');
-
-  const stores = {
-    connections: connectionsStore.create()
-    // devices: devicesStore.create()
-  };
-
-  addActionsListener(stores.connections);
-
-  return stores;
-};
+import {useDispatcher} from './dispatcher-context';
+import createConnectionStore from './features/connections/store';
 
 const App = () => {
   console.log('✨ rendering App');
-  const {addActionsListener} = useContext(GlobalContext);
+  const {addActionsListener} = useDispatcher();
 
-  createStores(addActionsListener);
+  const connectionsStore = createConnectionStore();
+  addActionsListener(connectionsStore);
 
   return (
     <div>
-      <ConnectionsContainer />
+      <ConnectionsContainer connectionsStore={connectionsStore} />
     </div>
   );
 };

@@ -7,6 +7,7 @@ const StyledConnection = styled.div.attrs(props => ({
   }
 }))`
   color: #fff;
+  user-select: none;
   height: 100px;
 `;
 

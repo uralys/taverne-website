@@ -7,8 +7,8 @@ const randomColor = () => `#${random1To(9)}${random1To(9)}${random1To(9)}`;
 
 const nbBuildings = 10;
 const nbLevelsPerBuilding = 20;
-const nbConnections = 2000;
-const nbDevicesPerConnection = 20;
+const nbConnections = 5;
+const nbDevicesPerConnection = 3;
 
 const rangeBuildings = [...Array(nbBuildings).keys()];
 const rangeLevels = [...Array(nbLevelsPerBuilding).keys()];
@@ -17,8 +17,8 @@ const rangeDevices = [...Array(nbDevicesPerConnection).keys()];
 
 // -----------------------------------------------------------------------------
 
-const setup = () => {
-  const CONFIG = {
+const generateConfig = () => {
+  const config = {
     connections: rangeConnections.map(c => ({
       id: `connection-${c}`,
       color: randomColor(),
@@ -37,10 +37,10 @@ const setup = () => {
     }))
   };
 
-  console.log('setup', {CONFIG});
-  window.CONFIG = CONFIG;
+  console.log('generated', config);
+  return config;
 };
 
 // -----------------------------------------------------------------------------
 
-export default setup;
+export default generateConfig;

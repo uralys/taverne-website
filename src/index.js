@@ -1,23 +1,27 @@
 import 'regenerator-runtime/runtime';
 import React from 'react';
 import {render} from 'react-dom';
-import setup from './setup';
 import App from './app';
-
-// -----------------------------------------------------------------------------
-
-setup();
+import {DispatcherProvider} from './dispatcher-context';
+// import App from './tuto/app-test';
 
 // -----------------------------------------------------------------------------
 
 const createApp = (options = {}) => {
   console.log('👨‍🚀 creating App', options);
-  if (!options.container) {
+  const id = options.container;
+
+  if (!id) {
     console.error('[App] Requires a container.');
   }
 
-  const container = document.getElementById(options.container);
-  render(<App />, container);
+  const container = document.getElementById(id);
+  render(
+    <DispatcherProvider>
+      <App id={id} />
+    </DispatcherProvider>,
+    container
+  );
 };
 
 // -----------------------------------------------------------------------------

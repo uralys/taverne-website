@@ -1,7 +1,6 @@
-import React, {useContext, useLayoutEffect, useState} from 'react';
-import store from './store';
+import React, {useLayoutEffect, useState} from 'react';
 import ConnectionsComponent from './component';
-import GlobalContext from '../../global-context';
+import {useDispatcher} from '../../dispatcher-context';
 
 // -----------------------------------------------------------------------------
 
@@ -9,25 +8,29 @@ import {LOAD_CONNECTIONS, SELECT_CONNECTION} from '../../actions';
 
 // -----------------------------------------------------------------------------
 
-const ConnectionsContainer = () => {
-  const [props, setProps] = useState({});
-  const {dispatch} = useContext(GlobalContext);
-  const {connections = {}} = props;
+const ConnectionsContainer = props => {
+  const [componentProps, setComponentProps] = useState({});
+  const {dispatch} = useDispatcher();
+  const {connectionsStore} = props;
+
+  console.log('✨ rendering ConnectionsContainer', props);
+
+  // -------------------------------------------------
 
   useLayoutEffect(() => {
     console.log('connection container subscribes to store events');
     const mapStateToProps = (state, action) => {
-      setProps({connections: state.connections});
+      console.log('  connectionsContainer: mapStateToProps');
+      setComponentProps({connections: state.connections});
     };
 
-    store.subscribe(mapStateToProps);
+    connectionsStore.subscribe(mapStateToProps);
 
     console.log('connection container mounted: loading connections');
     dispatch({type: LOAD_CONNECTIONS});
   }, []);
 
   // -------------------------------------------------
-  console.log('✨ rendering ConnectionsContainer', props);
 
   const selectConnection = id => () => {
     dispatch({
@@ -36,10 +39,12 @@ const ConnectionsContainer = () => {
     });
   };
 
+  // -------------------------------------------------
+
   return (
     <ConnectionsComponent
       selectConnection={selectConnection}
-      connections={connections}
+      {...componentProps}
     />
   );
 };

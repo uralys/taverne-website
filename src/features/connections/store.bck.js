@@ -4,11 +4,11 @@ import {
   SET_CONNECTION_COLOR,
   SELECT_CONNECTION
 } from '../../actions';
-import generateConfig from '../../generate-config';
 
 // -----------------------------------------------------------------------------
 
 const initialState = {};
+const subscriptions = [];
 
 const handledActions = [
   ADD_CONNECTION,
@@ -17,37 +17,32 @@ const handledActions = [
   SELECT_CONNECTION
 ];
 
+let state = initialState;
+
 // -----------------------------------------------------------------------------
 
-const createReducer = (getState, subscriptions) => action => {
+const onDispatch = action => {
   if (!handledActions.includes(action.type)) {
     console.log(`   connection store doesn't handle ${action.type}`);
     return;
   }
 
-  let newState;
-  const state = getState();
-  console.log('reducing', action, state);
-
   switch (action.type) {
     case LOAD_CONNECTIONS: {
-      const connections = generateConfig().connections.reduce(
-        (acc, _connection) => {
-          const {devices, ...content} = _connection;
-          return {
-            ...acc,
-            [_connection.id]: content
-          };
-        },
-        {}
-      );
+      const connections = CONFIG.connections.reduce((acc, _connection) => {
+        const {devices, ...content} = _connection;
+        return {
+          ...acc,
+          [_connection.id]: content
+        };
+      }, {});
 
-      newState = {...state, connections};
+      state = {...state, connections};
       break;
     }
     case ADD_CONNECTION: {
       const {connection} = action;
-      newState = {
+      state = {
         ...state,
         connections: {
           ...state.connections,
@@ -60,7 +55,7 @@ const createReducer = (getState, subscriptions) => action => {
       const {connectionId, color} = action;
       const currentConnection = state.connections[connectionId];
 
-      newState = {
+      state = {
         ...state,
         connections: {
           ...state.connections,
@@ -77,7 +72,7 @@ const createReducer = (getState, subscriptions) => action => {
       const currentConnection = state.connections[connectionId];
 
       console.log({state, connectionId, currentConnection});
-      newState = {
+      state = {
         ...state,
         connections: {
           ...state.connections,
@@ -90,32 +85,22 @@ const createReducer = (getState, subscriptions) => action => {
       break;
     }
     default:
-      newState = {...state};
+      return state;
   }
 
   subscriptions.forEach(subscription => {
-    subscription(newState, action);
+    subscription(state, action);
   });
-
-  return newState;
 };
 
 // -----------------------------------------------------------------------------
 
-const createConnectionStore = () => {
-  console.log('🏗️  creating Connections store');
-  const subscriptions = [];
-  let state = initialState;
-
-  const reduceAction = createReducer(() => state, subscriptions);
+const create = () => {
+  console.log('  creating Connections store');
 
   const store = {
     name: 'connections-store',
-    onDispatch: action => {
-      console.log('connectionsStore dealing with ondispatch', action, state);
-      state = reduceAction(action);
-    },
-    subscribe: subscription => subscriptions.push(subscription)
+    onDispatch
   };
 
   return store;
@@ -123,4 +108,8 @@ const createConnectionStore = () => {
 
 // -----------------------------------------------------------------------------
 
-export default createConnectionStore;
+const subscribe = subscription => subscriptions.push(subscription);
+
+// -----------------------------------------------------------------------------
+
+export default {create, subscribe};
