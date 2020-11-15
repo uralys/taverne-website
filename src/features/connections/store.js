@@ -27,7 +27,6 @@ const createReducer = (getState, subscriptions) => action => {
 
   let newState;
   const state = getState();
-  console.log('reducing', action, state);
 
   switch (action.type) {
     case LOAD_CONNECTIONS: {
@@ -102,21 +101,22 @@ const createReducer = (getState, subscriptions) => action => {
 
 // -----------------------------------------------------------------------------
 
+// @todo factorize using createStore()
 const createConnectionStore = (id = 'default') => {
-  console.log('🏗️  creating Connections store', id);
+  console.log('☢️  creating Connections store', id);
   const subscriptions = [];
   let state = initialState;
 
   const reduceAction = createReducer(() => state, subscriptions);
 
   const store = {
-    id: `connections-store-${id}`,
+    id,
     onDispatch: action => {
       if (action.scope && action.scope !== store.id) {
-        console.log(`${store.id} out of scope`);
+        console.log(`🏪 ${store.id} out of scope`);
         return;
       }
-      console.log(`${store.id} dealing with ondispatch`, action, state);
+      console.log(`🏪 ${store.id} reduceAction`, action, state);
       state = reduceAction(action);
     },
     subscribe: subscription => subscriptions.push(subscription)

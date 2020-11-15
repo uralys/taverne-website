@@ -3,7 +3,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import App from './app';
 import {DispatcherProvider} from './dispatcher-context';
-// import App from './tuto/app-test';
+import {StoresProvider} from './stores-context';
 
 // -----------------------------------------------------------------------------
 
@@ -18,7 +18,9 @@ const createApp = (options = {}) => {
   const container = document.getElementById(id);
   render(
     <DispatcherProvider>
-      <App id={id} />
+      <StoresProvider>
+        <App id={id} />
+      </StoresProvider>
     </DispatcherProvider>,
     container
   );

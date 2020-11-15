@@ -7,7 +7,7 @@ const randomColor = () => `#${random1To(9)}${random1To(9)}${random1To(9)}`;
 
 const nbBuildings = 10;
 const nbLevelsPerBuilding = 20;
-const nbConnections = 5;
+const nbConnections = 10;
 const nbDevicesPerConnection = 3;
 
 const rangeBuildings = [...Array(nbBuildings).keys()];
@@ -37,7 +37,6 @@ const generateConfig = () => {
     }))
   };
 
-  console.log('generated', config);
   return config;
 };
 

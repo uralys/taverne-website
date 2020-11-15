@@ -3,37 +3,33 @@ import ConnectionsContainer from './features/connections/container';
 // import {createStores} from './master';
 // import createGlobalContext from './global-context';
 
-import {useDispatcher} from './dispatcher-context';
 import createConnectionStore from './features/connections/store';
+import {useStores} from './stores-context';
 
 const App = props => {
-  const {id} = props;
-  console.log(`✨ rendering App ${id}`);
-  const {addActionsListener} = useDispatcher();
+  const {id: appId} = props;
+  console.log(`✨ rendering App ${appId}`);
+  const {createStore, withStore} = useStores();
 
-  const connectionsStore = createConnectionStore(1);
-  addActionsListener(connectionsStore);
+  createStore(createConnectionStore, 'connections-store-1');
+  createStore(createConnectionStore, 'connections-store-2');
 
-  const withConnectionsStore = Component => props => (
-    <Component {...props} connectionsStore={connectionsStore} />
-  );
+  const Connections1 = withStore({
+    id: 'connections-store-1',
+    prop: 'connectionsStore'
+  })(ConnectionsContainer);
 
-  const connectionsStore2 = createConnectionStore(2);
-  addActionsListener(connectionsStore2);
-
-  const withConnectionsStore2 = Component => props => (
-    <Component {...props} connectionsStore={connectionsStore2} />
-  );
-
-  const Connnections1 = withConnectionsStore(ConnectionsContainer);
-  const Connnections2 = withConnectionsStore2(ConnectionsContainer);
+  const Connections2 = withStore({
+    id: 'connections-store-2',
+    prop: 'connectionsStore'
+  })(ConnectionsContainer);
 
   return (
     <div>
-      <h1>{id}</h1>
-      <Connnections1 />
-      <Connnections1 />
-      <Connnections2 />
+      <h1>{appId}</h1>
+      <Connections1 />
+      <Connections1 />
+      <Connections2 />
     </div>
   );
 };

@@ -18,15 +18,15 @@ const ConnectionsContainer = props => {
   // -------------------------------------------------
 
   useLayoutEffect(() => {
-    console.log('connection container subscribes to store events');
+    console.log('🗳️ connection container subscribes to store events');
     const mapStateToProps = (state, action) => {
-      console.log('  connectionsContainer: mapStateToProps');
+      console.log('  🗳️ 👉 connectionsContainer: mapStateToProps');
       setComponentProps({connections: state.connections});
     };
 
     connectionsStore.subscribe(mapStateToProps);
 
-    console.log('connection container mounted: loading connections');
+    console.log('🗳️ connection container mounted: loading connections');
     dispatch({type: LOAD_CONNECTIONS});
   }, []);
 

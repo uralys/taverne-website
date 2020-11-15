@@ -33,7 +33,7 @@ function DispatcherProvider(props) {
   // const value = useMemo(() => [addActionsListener, dispatch]);
   const value = {addActionsListener, dispatch};
 
-  console.log('🏗️ creating a DispatcherProvider');
+  console.log('☢️ creating a DispatcherProvider');
   return <DispatcherContext.Provider value={value} {...props} />;
 }
 
