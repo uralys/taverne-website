@@ -10,12 +10,17 @@ const App = () => {
   console.log('✨ rendering App');
   const {addActionsListener} = useDispatcher();
 
-  const connectionsStore = createConnectionStore();
+  const connectionsStore = createConnectionStore(1);
   addActionsListener(connectionsStore);
+
+  const connectionsStore2 = createConnectionStore(2);
+  addActionsListener(connectionsStore2);
 
   return (
     <div>
       <ConnectionsContainer connectionsStore={connectionsStore} />
+      <ConnectionsContainer connectionsStore={connectionsStore} />
+      <ConnectionsContainer connectionsStore={connectionsStore2} />
     </div>
   );
 };

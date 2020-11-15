@@ -102,17 +102,21 @@ const createReducer = (getState, subscriptions) => action => {
 
 // -----------------------------------------------------------------------------
 
-const createConnectionStore = () => {
-  console.log('🏗️  creating Connections store');
+const createConnectionStore = (id = 'default') => {
+  console.log('🏗️  creating Connections store', id);
   const subscriptions = [];
   let state = initialState;
 
   const reduceAction = createReducer(() => state, subscriptions);
 
   const store = {
-    name: 'connections-store',
+    id: `connections-store-${id}`,
     onDispatch: action => {
-      console.log('connectionsStore dealing with ondispatch', action, state);
+      if (action.scope && action.scope !== store.id) {
+        console.log(`${store.id} out of scope`);
+        return;
+      }
+      console.log(`${store.id} dealing with ondispatch`, action, state);
       state = reduceAction(action);
     },
     subscribe: subscription => subscriptions.push(subscription)

@@ -35,6 +35,7 @@ const ConnectionsContainer = props => {
   const selectConnection = id => () => {
     dispatch({
       type: SELECT_CONNECTION,
+      scope: connectionsStore.id,
       connectionId: id
     });
   };
