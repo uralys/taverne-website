@@ -5,10 +5,12 @@ import {
   SELECT_CONNECTION
 } from '../../actions';
 import generateConfig from '../../generate-config';
+import createStore from '../../lib/hookstores/create-store';
 
 // -----------------------------------------------------------------------------
 
 const initialState = {};
+const name = 'connectionsStore';
 
 const handledActions = [
   ADD_CONNECTION,
@@ -21,7 +23,7 @@ const handledActions = [
 
 const createReducer = (getState, subscriptions) => action => {
   if (!handledActions.includes(action.type)) {
-    console.log(`   connection store doesn't handle ${action.type}`);
+    console.log(`   ${name} doesn't handle ${action.type}`);
     return;
   }
 
@@ -75,7 +77,6 @@ const createReducer = (getState, subscriptions) => action => {
       const {connectionId} = action;
       const currentConnection = state.connections[connectionId];
 
-      console.log({state, connectionId, currentConnection});
       newState = {
         ...state,
         connections: {
@@ -101,30 +102,10 @@ const createReducer = (getState, subscriptions) => action => {
 
 // -----------------------------------------------------------------------------
 
-// @todo factorize using createStore()
-const createConnectionStore = (id = 'default') => {
-  console.log('☢️  creating Connections store', id);
-  const subscriptions = [];
-  let state = initialState;
-
-  const reduceAction = createReducer(() => state, subscriptions);
-
-  const store = {
-    id,
-    onDispatch: action => {
-      if (action.scope && action.scope !== store.id) {
-        console.log(`🏪 ${store.id} out of scope`);
-        return;
-      }
-      console.log(`🏪 ${store.id} reduceAction`, action, state);
-      state = reduceAction(action);
-    },
-    subscribe: subscription => subscriptions.push(subscription)
-  };
-
-  return store;
-};
+const createConnectionStore = id =>
+  createStore(id, initialState, createReducer);
 
 // -----------------------------------------------------------------------------
 
 export default createConnectionStore;
+export {name};

@@ -10,7 +10,7 @@ function useDispatcher() {
   const context = useContext(DispatcherContext);
 
   if (!context) {
-    throw new Error(`useDispatcher must be used within a DispatcherProvider`);
+    throw new Error(`[hookstores] useDispatcher must be used within a DispatcherProvider`);
   }
 
   return context;
@@ -21,19 +21,18 @@ function useDispatcher() {
 function DispatcherProvider(props) {
   const listeners = [];
 
-  const addActionsListener = listener => listeners.push(listener);
+  const addActionsListener = (listener) => listeners.push(listener);
 
-  const dispatch = action => {
-    console.log('📡  dispatching', action);
-    listeners.forEach(listener => {
+  const dispatch = (action) => {
+    console.log('📡 [hookstores] dispatching', action);
+    listeners.forEach((listener) => {
       listener.onDispatch(action);
     });
   };
 
-  // const value = useMemo(() => [addActionsListener, dispatch]);
   const value = {addActionsListener, dispatch};
 
-  console.log('☢️ creating a DispatcherProvider');
+  console.log('☢️ [hookstores] creating a DispatcherProvider');
   return <DispatcherContext.Provider value={value} {...props} />;
 }
 

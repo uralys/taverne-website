@@ -2,8 +2,8 @@ import 'regenerator-runtime/runtime';
 import React from 'react';
 import {render} from 'react-dom';
 import App from './app';
-import {DispatcherProvider} from './dispatcher-context';
-import {StoresProvider} from './stores-context';
+import {DispatcherProvider} from './lib/hookstores/dispatcher-context';
+import {StoresProvider} from './lib/hookstores/stores-context';
 
 // -----------------------------------------------------------------------------
 

@@ -1,28 +1,21 @@
 import React from 'react';
+import storeDescriptions from './stores-descriptions';
 import ConnectionsContainer from './features/connections/container';
-// import {createStores} from './master';
-// import createGlobalContext from './global-context';
+import {useStores} from './lib/hookstores/stores-context';
 
-import createConnectionStore from './features/connections/store';
-import {useStores} from './stores-context';
+// -----------------------------------------------------------------------------
 
 const App = props => {
   const {id: appId} = props;
-  console.log(`✨ rendering App ${appId}`);
-  const {createStore, withStore} = useStores();
+  const {createStores, withStore} = useStores();
 
-  createStore(createConnectionStore, 'connections-store-1');
-  createStore(createConnectionStore, 'connections-store-2');
+  console.log(`☢️ creating App ${appId}`);
+  createStores(storeDescriptions);
 
-  const Connections1 = withStore({
-    id: 'connections-store-1',
-    prop: 'connectionsStore'
-  })(ConnectionsContainer);
+  const {connectionsStore1, connectionsStore2} = storeDescriptions;
 
-  const Connections2 = withStore({
-    id: 'connections-store-2',
-    prop: 'connectionsStore'
-  })(ConnectionsContainer);
+  const Connections1 = withStore(connectionsStore1)(ConnectionsContainer);
+  const Connections2 = withStore(connectionsStore2)(ConnectionsContainer);
 
   return (
     <div>
