@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import UsingHookstores from './apps/using-hookstores';
+import GithubCorner from './components/github-corner';
 
 // -----------------------------------------------------------------------------
 
@@ -26,6 +27,7 @@ const App = props => {
 
   return (
     <$App>
+      <GithubCorner />
       <UsingHookstores />
     </$App>
   );

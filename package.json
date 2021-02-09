@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/preset-react": "^7.12.13",
+    "@svgr/webpack": "^5.5.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-styled-components": "^1.11.1",
     "compression-webpack-plugin": "^7.1.2",
