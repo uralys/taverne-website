@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Square from './square';
 
+// -----------------------------------------------------------------------------
+
 const $RGB = styled.div`
   width: 100%;
   max-width: 160px;
@@ -9,6 +11,8 @@ const $RGB = styled.div`
   flex-direction: row;
   padding: 5px;
 `;
+
+// -----------------------------------------------------------------------------
 
 const RGB = props => {
   const {r, g, b} = props;
@@ -21,5 +25,7 @@ const RGB = props => {
     </$RGB>
   );
 };
+
+// -----------------------------------------------------------------------------
 
 export default RGB;

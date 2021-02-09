@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import styled, {css} from 'styled-components';
 
+// -----------------------------------------------------------------------------
+
 const $Square = styled.div`
   border-radius: 5px;
   margin: 0 2px;
@@ -33,6 +35,8 @@ const $Square = styled.div`
   transition: background-color 0.5s, border 0.2s;
 `;
 
+// -----------------------------------------------------------------------------
+
 const Square = props => {
   const [nbRenders, setNbRenders] = useState(0);
   const {selected} = props;
@@ -47,5 +51,7 @@ const Square = props => {
     </$Square>
   );
 };
+
+// -----------------------------------------------------------------------------
 
 export default Square;

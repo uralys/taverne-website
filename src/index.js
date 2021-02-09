@@ -1,7 +1,7 @@
 import 'regenerator-runtime/runtime';
 import React from 'react';
 import {render} from 'react-dom';
-import AppWithHookstores from './apps/using-hookstores/app';
+import App from './app';
 
 // -----------------------------------------------------------------------------
 
@@ -14,7 +14,7 @@ const createApp = (options = {}) => {
   }
 
   const container = document.getElementById(id);
-  render(<AppWithHookstores id={id} />, container);
+  render(<App id={id} />, container);
 };
 
 // -----------------------------------------------------------------------------

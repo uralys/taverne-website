@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import RGB from './rgb';
 
+// -----------------------------------------------------------------------------
+
 const $Line = styled.div`
   width: 100%;
   height: 70px;
@@ -9,6 +11,8 @@ const $Line = styled.div`
   flex-direction: row;
   justify-content: center;
 `;
+
+// -----------------------------------------------------------------------------
 
 const Line = props => {
   return (
@@ -21,5 +25,7 @@ const Line = props => {
     </$Line>
   );
 };
+
+// -----------------------------------------------------------------------------
 
 export default Line;

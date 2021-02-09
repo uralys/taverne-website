@@ -1,8 +1,6 @@
 import React from 'react';
-import Square from '../../components/square';
 import styled from 'styled-components';
-import RGB from '../../components/rgb';
-import Line from '../../components/line';
+import UsingHookstores from './apps/using-hookstores';
 
 // -----------------------------------------------------------------------------
 
@@ -28,19 +26,7 @@ const App = props => {
 
   return (
     <$App>
-      <h2>Hookstores demo</h2>
-      <p>{`a Square`}</p>
-      <Square color="#75AF3B" />
-      <p>{`an RGB`}</p>
-      <RGB />
-      <p>{`a Line`}</p>
-      <Line />
-      <p>{`an array of Lines`}</p>
-      <Line />
-      <Line />
-      <Line />
-      <Line />
-      <Line />
+      <UsingHookstores />
     </$App>
   );
 };
