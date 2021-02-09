@@ -15,13 +15,13 @@ const $RGB = styled.div`
 // -----------------------------------------------------------------------------
 
 const RGB = props => {
-  const {r, g, b} = props;
+  const {r, g, b, toggle} = props;
 
   return (
     <$RGB>
-      <Square color="#CE3B1E" selected={r} />
-      <Square color="#75AF3B" selected={g} />
-      <Square color="#4C7FB5" selected={b} />
+      <Square color="#CE3B1E" selected={r} onClick={toggle && toggle('r')} />
+      <Square color="#75AF3B" selected={g} onClick={toggle && toggle('g')} />
+      <Square color="#4C7FB5" selected={b} onClick={toggle && toggle('b')} />
     </$RGB>
   );
 };

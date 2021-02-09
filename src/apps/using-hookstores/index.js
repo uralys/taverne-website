@@ -7,21 +7,17 @@ import {createStores} from 'hookstores';
 
 import App from './app';
 import singleSquareStore from './features/single-square/store-description';
+import singleRGBStore from './features/single-rgb/store-description';
 
 // -----------------------------------------------------------------------------
 
-const createApp = (options = {}) => {
-  console.log('👨‍🚀 creating Demo', options);
-  const id = options.container;
+const createApp = ({id}) => {
+  console.log('👨‍🚀 creating demo using Hookstores');
 
-  if (!id) {
-    console.error('[Demo] Requires a container.');
-  }
+  /* First thing before to render the React App: create the stores! */
+  createStores({singleSquareStore, singleRGBStore});
 
-  /* first thing befor to create the React App is to create the stores */
-  createStores({singleSquareStore});
-
-  /* Now we can use the hooks everywhere, let's mount the React App 🚀 */
+  /* Now, we can use these hooks/stores everywhere, let's mount the React App 🚀 */
   const container = document.getElementById(id);
   render(<App id={id} />, container);
 };

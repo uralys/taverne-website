@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import GithubCorner from '../../components/github-corner';
 import SingleSquare from './features/single-square/container';
-import RGB from '../../components/rgb';
+import SingleRGB from './features/single-rgb/container';
 import Line from '../../components/line';
 
 // -----------------------------------------------------------------------------
@@ -35,7 +35,8 @@ const App = props => {
       <SingleSquare />
 
       <p>{`an RGB`}</p>
-      <RGB />
+      <SingleRGB />
+
       <p>{`a Line`}</p>
       <Line />
       <p>{`an array of Lines`}</p>

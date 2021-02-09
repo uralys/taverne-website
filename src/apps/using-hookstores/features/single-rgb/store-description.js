@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------------
 
-const singleSquareStore = 'singleSquareStore';
-const TOGGLE_SINGLE_SQUARE = 'TOGGLE_SINGLE_SQUARE';
+const singleRGBStore = 'singleRGBStore';
+const TOGGLE_SINGLE_RGB_SQUARE = 'TOGGLE_SINGLE_RGB_SQUARE';
 
 // -----------------------------------------------------------------------------
 
@@ -9,8 +9,10 @@ const computeAction = async (currentState, action) => {
   let newState;
 
   switch (action.type) {
-    case TOGGLE_SINGLE_SQUARE: {
-      newState = {selected: !currentState.selected};
+    case TOGGLE_SINGLE_RGB_SQUARE: {
+      const {color} = action;
+      newState = {...currentState, [color]: !currentState[color]};
+      console.log({newState});
       break;
     }
     default:
@@ -23,12 +25,12 @@ const computeAction = async (currentState, action) => {
 // -----------------------------------------------------------------------------
 
 const description = {
-  initialState: {selected: false},
-  handledActions: [TOGGLE_SINGLE_SQUARE],
+  initialState: {r: false, g: false, b: false},
+  handledActions: [TOGGLE_SINGLE_RGB_SQUARE],
   computeAction
 };
 
 // -----------------------------------------------------------------------------
 
 export default description;
-export {singleSquareStore, TOGGLE_SINGLE_SQUARE};
+export {singleRGBStore, TOGGLE_SINGLE_RGB_SQUARE};
