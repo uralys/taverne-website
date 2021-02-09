@@ -5,7 +5,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
   mode: 'production',
   entry: {
-    app: './src/index.js'
+    usingHookstores: './src/apps/using-hookstores/index.js'
   },
   module: {
     strictExportPresence: true,
@@ -33,7 +33,6 @@ module.exports = {
     minimize: true,
     minimizer: [
       new TerserPlugin({
-        cache: true,
         parallel: true,
         terserOptions: {
           ecma: 6

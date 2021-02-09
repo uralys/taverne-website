@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import UsingHookstores from './apps/using-hookstores';
-import GithubCorner from './components/github-corner';
+import GithubCorner from '../../components/github-corner';
+import SingleSquare from './features/single-square/container';
+import RGB from '../../components/rgb';
+import Line from '../../components/line';
 
 // -----------------------------------------------------------------------------
 
@@ -28,7 +30,20 @@ const App = props => {
   return (
     <$App>
       <GithubCorner />
-      <UsingHookstores />
+      <h2>Hookstores demo</h2>
+      <p>{`a Square`}</p>
+      <SingleSquare />
+
+      <p>{`an RGB`}</p>
+      <RGB />
+      <p>{`a Line`}</p>
+      <Line />
+      <p>{`an array of Lines`}</p>
+      <Line />
+      <Line />
+      <Line />
+      <Line />
+      <Line />
     </$App>
   );
 };

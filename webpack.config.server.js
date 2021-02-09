@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   mode: 'development',
   entry: {
-    app: './src/index.js'
+    usingHookstores: './src/apps/using-hookstores/index.js'
   },
   devtool: 'inline-source-map',
   module: {

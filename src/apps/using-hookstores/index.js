@@ -1,28 +1,35 @@
+import 'regenerator-runtime/runtime';
 import React from 'react';
-import Square from '../../components/square';
-import RGB from '../../components/rgb';
-import Line from '../../components/line';
+import {render} from 'react-dom';
+import {createStores} from 'hookstores';
 
 // -----------------------------------------------------------------------------
 
-const UsingHookstores = props => {
-  return (
-    <>
-      <h2>Hookstores demo</h2>
-      <p>{`a Square`}</p>
-      <Square color="#75AF3B" />
-      <p>{`an RGB`}</p>
-      <RGB />
-      <p>{`a Line`}</p>
-      <Line />
-      <p>{`an array of Lines`}</p>
-      <Line />
-      <Line />
-      <Line />
-      <Line />
-      <Line />
-    </>
-  );
+import App from './app';
+import singleSquareStore from './features/single-square/store-description';
+
+// -----------------------------------------------------------------------------
+
+const createApp = (options = {}) => {
+  console.log('👨‍🚀 creating Demo', options);
+  const id = options.container;
+
+  if (!id) {
+    console.error('[Demo] Requires a container.');
+  }
+
+  /* first thing befor to create the React App is to create the stores */
+  createStores({singleSquareStore});
+
+  /* Now we can use the hooks everywhere, let's mount the React App 🚀 */
+  const container = document.getElementById(id);
+  render(<App id={id} />, container);
 };
 
-export default UsingHookstores;
+// -----------------------------------------------------------------------------
+
+if (window && !window.createApp) {
+  window.createApp = createApp;
+}
+
+export default createApp;

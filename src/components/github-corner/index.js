@@ -12,6 +12,10 @@ import GithubCornerSVG from './github-corner.svg';
 // -----------------------------------------------------------------------------
 
 const StyledCorner = styled.a`
+  position: fixed;
+  top: 0;
+  right: 0;
+
   :hover .github-corner_svg__octo-arm {
     animation: octocat-wave 560ms ease-in-out;
   }
