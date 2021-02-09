@@ -1,11 +1,8 @@
 import React from 'react';
-import storeDescriptions from './stores-descriptions';
-import ConnectionsContainer from './features/connections/container';
-import Square from './components/square';
+import Square from '../../components/square';
 import styled from 'styled-components';
-import RGB from './components/rgb';
-import Line from './components/line';
-// import {createStores} from './lib/hookstores/stores-context';
+import RGB from '../../components/rgb';
+import Line from '../../components/line';
 
 // -----------------------------------------------------------------------------
 
@@ -25,10 +22,6 @@ const $App = styled.div`
 
 // -----------------------------------------------------------------------------
 
-// createStores(storeDescriptions);
-
-// -----------------------------------------------------------------------------
-
 const App = props => {
   const {id: appId} = props;
   console.log(`☢️ creating App ${appId}`);
@@ -36,13 +29,13 @@ const App = props => {
   return (
     <$App>
       <h2>Hookstores demo</h2>
-      <p>{`That's a Square`}</p>
+      <p>{`a Square`}</p>
       <Square color="#75AF3B" />
-      <p>{`That's an RGB`}</p>
+      <p>{`an RGB`}</p>
       <RGB />
-      <p>{`That's a Line`}</p>
+      <p>{`a Line`}</p>
       <Line />
-      <p>{`That's an array of Lines`}</p>
+      <p>{`an array of Lines`}</p>
       <Line />
       <Line />
       <Line />
