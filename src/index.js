@@ -1,7 +1,7 @@
 import 'regenerator-runtime/runtime';
 import React from 'react';
 import {render} from 'react-dom';
-import AppWithHookstores from './apps/with-hookstores/app';
+import AppWithHookstores from './apps/using-hookstores/app';
 
 // -----------------------------------------------------------------------------
 
