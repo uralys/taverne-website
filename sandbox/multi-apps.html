@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Sandbox - Demo hookstores</title>
+  </head>
+  <body>
+    <script src="app.bundle.js"></script>
+    <div id="root">
+      <div id="app1"></div>
+      <div id="app2"></div>
+    </div>
+
+    <style>
+      body {
+        margin: 0;
+      }
+      #root {
+        display: flex;
+      }
+      #app1 {
+        width: 50%;
+      }
+      #app2 {
+        width: 50%;
+      }
+    </style>
+
+    <script>
+      createApp({container: 'app1'});
+      createApp({container: 'app2'});
+    </script>
+  </body>
+</html>
