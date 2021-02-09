@@ -18,7 +18,6 @@ const $Square = styled.div`
 
   p {
     font-size: 18px;
-    font-weight: bold;
   }
 
   ${props =>
@@ -30,23 +29,28 @@ const $Square = styled.div`
     props.selected &&
     css`
       border: 2px solid white;
+
+      p {
+        font-size: 20px;
+        font-weight: bold;
+      }
     `}
 
-  transition: background-color 0.5s, border 0.2s;
+  transition: font-size 0.5s, border 0.2s;
 `;
 
 // -----------------------------------------------------------------------------
 
 const Square = props => {
   const [nbRenders, setNbRenders] = useState(0);
-  const {selected = false} = props;
+  const {onClick, color, selected = false} = props;
 
   useEffect(() => {
     setNbRenders(nbRenders + 1);
   }, [selected]);
 
   return (
-    <$Square {...props}>
+    <$Square color={color} onClick={onClick} selected={selected}>
       <p>{nbRenders}</p>
     </$Square>
   );
