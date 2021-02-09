@@ -3,16 +3,21 @@ import storeDescriptions from './stores-descriptions';
 import ConnectionsContainer from './features/connections/container';
 import Square from './components/square';
 import styled from 'styled-components';
+import RGB from './components/rgb';
+import Line from './components/line';
 // import {createStores} from './lib/hookstores/stores-context';
 
 // -----------------------------------------------------------------------------
 
 const $App = styled.div`
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   background-color: #282c34;
   color: #ededed;
   min-height: 100vh;
-  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
   position: relative;
   overflow: hidden;
@@ -30,10 +35,19 @@ const App = props => {
 
   return (
     <$App>
-      <h2>Demo hookstores</h2>
-      <Square color={'#7FFF00'} selected />
-      <Square color={'#CE3B1E'} />
-      <Square color={'#4C7FB5'} />
+      <h2>Hookstores demo</h2>
+      <p>{`That's a Square`}</p>
+      <Square color="#75AF3B" />
+      <p>{`That's an RGB`}</p>
+      <RGB />
+      <p>{`That's a Line`}</p>
+      <Line />
+      <p>{`That's an array of Lines`}</p>
+      <Line />
+      <Line />
+      <Line />
+      <Line />
+      <Line />
     </$App>
   );
 };
