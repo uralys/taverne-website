@@ -39,7 +39,7 @@ const $Square = styled.div`
 
 const Square = props => {
   const [nbRenders, setNbRenders] = useState(0);
-  const {selected} = props;
+  const {selected = false} = props;
 
   useEffect(() => {
     setNbRenders(nbRenders + 1);

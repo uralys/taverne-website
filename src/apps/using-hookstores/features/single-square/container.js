@@ -1,7 +1,6 @@
-import React, {useLayoutEffect} from 'react';
-import Square from '../../../../components/square';
-
+import React from 'react';
 import {useStore} from 'hookstores';
+import Square from '../../../../components/square';
 
 // -----------------------------------------------------------------------------
 
@@ -12,15 +11,9 @@ const propsMapping = {
 // -----------------------------------------------------------------------------
 
 const SingleSquare = props => {
-  // const {selected} = useStore('singleSquareStore', propsMapping);
-
-  useLayoutEffect(() => {
-    console.log(`☢️ on mounted single-square container`);
-    // createStores({singleSquareStore});
-  }, []);
-
-  // return <Square color="#75AF3B" selected={selected} />;
-  return <Square color="#75AF3B" />;
+  const {selected} = useStore('singleSquareStore', propsMapping);
+  console.log('rendered single square', selected);
+  return <Square color="#75AF3B" selected={selected} />;
 };
 
 // -----------------------------------------------------------------------------
