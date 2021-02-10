@@ -11,7 +11,6 @@ import Square from '../../../../components/square';
 import COLORS from '../../colors';
 
 // -----------------------------------------------------------------------------
-// feature
 
 import {singleRGBStore, TOGGLE_SINGLE_RGB_SQUARE} from './store-description';
 
