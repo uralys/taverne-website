@@ -11,8 +11,7 @@ const computeAction = async (currentState, action) => {
   switch (action.type) {
     case TOGGLE_SINGLE_RGB_SQUARE: {
       const {color} = action;
-      newState = {...currentState, [color]: !currentState[color]};
-      console.log({newState});
+      newState = {...currentState, [color]: currentState[color] + 1};
       break;
     }
     default:
@@ -25,7 +24,7 @@ const computeAction = async (currentState, action) => {
 // -----------------------------------------------------------------------------
 
 const description = {
-  initialState: {r: false, g: false, b: false},
+  initialState: {r: 0, g: 0, b: 0},
   handledActions: [TOGGLE_SINGLE_RGB_SQUARE],
   computeAction
 };

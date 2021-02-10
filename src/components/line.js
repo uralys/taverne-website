@@ -1,6 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-import RGB from './rgb';
 
 // -----------------------------------------------------------------------------
 
@@ -14,18 +12,4 @@ const $Line = styled.div`
 
 // -----------------------------------------------------------------------------
 
-const Line = props => {
-  return (
-    <$Line>
-      <RGB />
-      <RGB />
-      <RGB />
-      <RGB />
-      <RGB />
-    </$Line>
-  );
-};
-
-// -----------------------------------------------------------------------------
-
-export default Line;
+export default $Line;

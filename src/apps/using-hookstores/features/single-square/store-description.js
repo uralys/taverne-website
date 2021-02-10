@@ -10,7 +10,7 @@ const computeAction = async (currentState, action) => {
 
   switch (action.type) {
     case TOGGLE_SINGLE_SQUARE: {
-      newState = {selected: !currentState.selected};
+      newState = {clickCount: currentState.clickCount + 1};
       break;
     }
     default:
@@ -23,7 +23,7 @@ const computeAction = async (currentState, action) => {
 // -----------------------------------------------------------------------------
 
 const description = {
-  initialState: {selected: false},
+  initialState: {clickCount: 0},
   handledActions: [TOGGLE_SINGLE_SQUARE],
   computeAction
 };

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import styled, {css} from 'styled-components';
 
 // -----------------------------------------------------------------------------
@@ -9,14 +9,17 @@ const $Square = styled.div`
   box-sizing: border-box;
   cursor: pointer;
   width: 100%;
-  max-width: 50px;
-  height: 50px;
+  max-width: 100px;
+  height: 60px;
 
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  /* align-items: center;
+  justify-content: center; */
 
   p {
+    margin: 0;
+    padding: 0;
     font-size: 18px;
   }
 
@@ -41,20 +44,28 @@ const $Square = styled.div`
 
 // -----------------------------------------------------------------------------
 
-const Square = props => {
-  const [nbRenders, setNbRenders] = useState(0);
-  const {onClick, color, selected = false} = props;
+class Square extends React.Component {
+  constructor() {
+    super();
+    this.nbRenders = 0;
+  }
 
-  useEffect(() => {
-    setNbRenders(nbRenders + 1);
-  }, [selected]);
+  render() {
+    const {onClick, color, clickCount} = this.props;
+    if (clickCount === undefined) {
+      return <h5>todo</h5>;
+    }
 
-  return (
-    <$Square color={color} onClick={onClick} selected={selected}>
-      <p>{nbRenders}</p>
-    </$Square>
-  );
-};
+    this.nbRenders++;
+
+    return (
+      <$Square color={color} onClick={onClick}>
+        <p>clicks: {clickCount}</p>
+        <p>renders: {this.nbRenders}</p>
+      </$Square>
+    );
+  }
+}
 
 // -----------------------------------------------------------------------------
 
