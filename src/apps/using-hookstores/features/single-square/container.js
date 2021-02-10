@@ -1,10 +1,21 @@
+// -----------------------------------------------------------------------------
+
 import React from 'react';
 import {dispatch, useStore} from 'hookstores';
+
+// -----------------------------------------------------------------------------
+// common components and settings
+
 import Square from '../../../../components/square';
+import COLORS from '../../colors';
 
 // -----------------------------------------------------------------------------
 
 import {singleSquareStore, TOGGLE_SINGLE_SQUARE} from './store-description';
+
+// -----------------------------------------------------------------------------
+
+const GREEN = COLORS.g;
 
 // -----------------------------------------------------------------------------
 
@@ -22,7 +33,7 @@ const toggle = () => {
 
 const SingleSquare = props => {
   const {clickCount} = useStore(singleSquareStore, propsMapping);
-  return <Square color="#75AF3B" clickCount={clickCount} onClick={toggle} />;
+  return <Square color={GREEN} clickCount={clickCount} onClick={toggle} />;
 };
 
 // -----------------------------------------------------------------------------
