@@ -1,7 +1,7 @@
 import 'regenerator-runtime/runtime';
 import React from 'react';
 import {render} from 'react-dom';
-import {createStores} from 'hookstores';
+import {Hookstores} from 'hookstores';
 
 // -----------------------------------------------------------------------------
 
@@ -12,15 +12,20 @@ import singleLineStore from './features/single-line/store-description';
 
 // -----------------------------------------------------------------------------
 
+const descriptions = {singleLineStore, singleRGBStore, singleSquareStore};
+
+// -----------------------------------------------------------------------------
+
 const createApp = ({id}) => {
   console.log('👨‍🚀 creating demo using Hookstores');
-
-  /* First thing before to render the React App: create the stores! */
-  createStores({singleSquareStore, singleRGBStore, singleLineStore});
-
-  /* Now, we can use these hooks/stores everywhere, let's mount the React App 🚀 */
   const container = document.getElementById(id);
-  render(<App id={id} />, container);
+
+  render(
+    <Hookstores descriptions={descriptions}>
+      <App id={id} />
+    </Hookstores>,
+    container
+  );
 };
 
 // -----------------------------------------------------------------------------

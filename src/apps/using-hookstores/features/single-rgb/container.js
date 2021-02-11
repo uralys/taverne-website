@@ -1,7 +1,8 @@
 // -----------------------------------------------------------------------------
 
+import {useHookstores} from 'hookstores';
 import React from 'react';
-import {dispatch, useStore} from 'hookstores';
+// import {dispatch, useStore} from 'hookstores';
 
 // -----------------------------------------------------------------------------
 // common components and settings
@@ -20,24 +21,23 @@ const propsMapping = color => ({
   clickCount: color
 });
 
-const toggle = color => () => {
-  dispatch({
-    type: TOGGLE_SINGLE_RGB_SQUARE,
-    color
-  });
-};
-
 // -----------------------------------------------------------------------------
 
 const SquareContainer = props => {
   const {color} = props;
+  const {dispatch, useStore} = useHookstores();
   const {clickCount} = useStore(singleRGBStore, propsMapping(color));
 
   return (
     <Square
       color={COLORS[color]}
       clickCount={clickCount}
-      onClick={toggle(color)}
+      onClick={() =>
+        dispatch({
+          type: TOGGLE_SINGLE_RGB_SQUARE,
+          color
+        })
+      }
     />
   );
 };
