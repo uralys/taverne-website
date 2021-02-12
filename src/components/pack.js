@@ -2,14 +2,16 @@ import styled from 'styled-components';
 
 // -----------------------------------------------------------------------------
 
-const $Line = styled.div`
-  width: 100%;
-  height: 70px;
+const $Pack = styled.div`
+  width: 80%;
   display: flex;
   flex-direction: row;
+  flex-flow: wrap;
   justify-content: center;
+  border: 2px dashed;
+  margin: 5px;
 `;
 
 // -----------------------------------------------------------------------------
 
-export default $Line;
+export default $Pack;

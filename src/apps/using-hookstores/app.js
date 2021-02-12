@@ -4,8 +4,7 @@ import styled from 'styled-components';
 import GithubCorner from '../../components/github-corner';
 import SingleSquare from './features/single-square/container';
 import SingleRGB from './features/single-rgb/container';
-import SingleLine from './features/single-line/container';
-import Line from '../../components/line';
+import SinglePack from './features/single-pack/container';
 
 // -----------------------------------------------------------------------------
 
@@ -34,21 +33,19 @@ const App = props => {
       <h2>Hookstores demo</h2>
       <GithubCorner />
 
-      <p>{`a Square`}</p>
+      <p>{`one Square`}</p>
       <SingleSquare />
 
-      <p>{`an RGB`}</p>
+      <p>{`one RGB`}</p>
       <SingleRGB />
 
-      <p>{`a Line`}</p>
-      <SingleLine />
+      <p>{`one Pack`}</p>
+      <SinglePack />
 
-      <p>{`an array of Lines`}</p>
-      <Line />
-      <Line />
-      <Line />
-      <Line />
-      <Line />
+      <p>{`a [Pack] array`}</p>
+      <SinglePack />
+      <SinglePack />
+      <SinglePack />
     </$App>
   );
 };

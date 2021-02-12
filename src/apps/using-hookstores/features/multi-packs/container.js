@@ -2,12 +2,11 @@
 
 import {useHookstores} from 'hookstores';
 import React from 'react';
-// import {dispatch, useStore} from 'hookstores';
 
 // -----------------------------------------------------------------------------
 // common components and settings
 
-import $Line from '../../../../components/line';
+import $Pack from '../../../../components/pack';
 import $RGB from '../../../../components/rgb';
 import Square from '../../../../components/square';
 import COLORS from '../../colors';
@@ -65,16 +64,16 @@ const RGBContainer = props => {
 
 // -----------------------------------------------------------------------------
 
-const SingleLine = props => {
+const SinglePack = props => {
   return (
-    <$Line>
+    <$Pack>
       {[0, 1, 2, 3, 4].map(num => (
         <RGBContainer key={`rgb-${num}`} num={num} />
       ))}
-    </$Line>
+    </$Pack>
   );
 };
 
 // -----------------------------------------------------------------------------
 
-export default SingleLine;
+export default SinglePack;

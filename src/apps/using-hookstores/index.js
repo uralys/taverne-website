@@ -8,11 +8,11 @@ import {Hookstores} from 'hookstores';
 import App from './app';
 import singleSquareStore from './features/single-square/store-description';
 import singleRGBStore from './features/single-rgb/store-description';
-import singleLineStore from './features/single-line/store-description';
+import singlePackStore from './features/single-pack/store-description';
 
 // -----------------------------------------------------------------------------
 
-const descriptions = {singleLineStore, singleRGBStore, singleSquareStore};
+const descriptions = {singlePackStore, singleRGBStore, singleSquareStore};
 
 // -----------------------------------------------------------------------------
 

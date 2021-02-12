@@ -6,26 +6,30 @@ import React from 'react';
 // -----------------------------------------------------------------------------
 // common components and settings
 
+import $Pack from '../../../../components/pack';
 import $RGB from '../../../../components/rgb';
 import Square from '../../../../components/square';
 import COLORS from '../../colors';
 
 // -----------------------------------------------------------------------------
 
-import {singleRGBStore, TOGGLE_SINGLE_RGB_SQUARE} from './store-description';
+import {
+  singlePackStore,
+  TOGGLE_SQUARE_IN_SINGLE_PACK
+} from './store-description';
 
 // -----------------------------------------------------------------------------
 
-const propsMapping = color => ({
-  clickCount: color
+const propsMapper = num => color => ({
+  clickCount: `${num}.${color}`
 });
 
 // -----------------------------------------------------------------------------
 
 const SquareContainer = props => {
-  const {color} = props;
+  const {color, num, propsMapping} = props;
   const {dispatch, useStore} = useHookstores();
-  const {clickCount} = useStore(singleRGBStore, propsMapping(color));
+  const {clickCount} = useStore(singlePackStore, propsMapping(color));
 
   return (
     <Square
@@ -33,7 +37,8 @@ const SquareContainer = props => {
       clickCount={clickCount}
       onClick={() =>
         dispatch({
-          type: TOGGLE_SINGLE_RGB_SQUARE,
+          type: TOGGLE_SQUARE_IN_SINGLE_PACK,
+          num,
           color
         })
       }
@@ -43,14 +48,35 @@ const SquareContainer = props => {
 
 // -----------------------------------------------------------------------------
 
-const SingleRGB = props => (
-  <$RGB>
-    <SquareContainer color="r" />
-    <SquareContainer color="g" />
-    <SquareContainer color="b" />
-  </$RGB>
-);
+const RGBContainer = props => {
+  const {num} = props;
+
+  return (
+    <$RGB>
+      {['r', 'g', 'b'].map(color => (
+        <SquareContainer
+          key={color}
+          color={color}
+          num={num}
+          propsMapping={propsMapper(num)}
+        />
+      ))}
+    </$RGB>
+  );
+};
 
 // -----------------------------------------------------------------------------
 
-export default SingleRGB;
+const SinglePack = props => {
+  return (
+    <$Pack>
+      {[0, 1, 2, 3, 4].map(num => (
+        <RGBContainer key={`rgb-${num}`} num={num} />
+      ))}
+    </$Pack>
+  );
+};
+
+// -----------------------------------------------------------------------------
+
+export default SinglePack;
