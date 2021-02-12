@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------------
 
-const singleLineStore = 'singleLineStore';
-const TOGGLE_SINGLE_LINE_SQUARE = 'TOGGLE_SINGLE_LINE_SQUARE';
+const multiPacksStore = 'multiPacksStore';
+const TOGGLE_SQUARE_IN_MULTI_PACKS = 'TOGGLE_SQUARE_IN_MULTI_PACKS';
 
 // -----------------------------------------------------------------------------
 
@@ -9,13 +9,16 @@ const computeAction = async (currentState, action) => {
   let newState;
 
   switch (action.type) {
-    case TOGGLE_SINGLE_LINE_SQUARE: {
-      const {num, color} = action;
+    case TOGGLE_SQUARE_IN_MULTI_PACKS: {
+      const {packNum, rgbNum, color} = action;
       newState = {
         ...currentState,
-        [num]: {
-          ...currentState[num],
-          [color]: currentState[num][color] + 1
+        [packNum]: {
+          ...currentState[packNum],
+          [rgbNum]: {
+            ...currentState[packNum][rgbNum],
+            [color]: currentState[packNum][rgbNum][color] + 1
+          }
         }
       };
       break;
@@ -29,8 +32,14 @@ const computeAction = async (currentState, action) => {
 
 // -----------------------------------------------------------------------------
 
+const createPack = () =>
+  [0, 1, 2, 3, 4, 5].reduce(
+    (acc, rgbNum) => ({...acc, [rgbNum]: {r: 0, g: 0, b: 0}}),
+    {}
+  );
+
 const initialState = [0, 1, 2, 3, 4, 5].reduce(
-  (acc, num) => ({...acc, [num]: {r: 0, g: 0, b: 0}}),
+  (acc, packNum) => ({...acc, [packNum]: createPack()}),
   {}
 );
 
@@ -38,11 +47,11 @@ const initialState = [0, 1, 2, 3, 4, 5].reduce(
 
 const description = {
   initialState,
-  handledActions: [TOGGLE_SINGLE_LINE_SQUARE],
+  handledActions: [TOGGLE_SQUARE_IN_MULTI_PACKS],
   computeAction
 };
 
 // -----------------------------------------------------------------------------
 
 export default description;
-export {singleLineStore, TOGGLE_SINGLE_LINE_SQUARE};
+export {multiPacksStore, TOGGLE_SQUARE_IN_MULTI_PACKS};

@@ -5,6 +5,7 @@ import GithubCorner from '../../components/github-corner';
 import SingleSquare from './features/single-square/container';
 import SingleRGB from './features/single-rgb/container';
 import SinglePack from './features/single-pack/container';
+import MultiPacks from './features/multi-packs/container';
 
 // -----------------------------------------------------------------------------
 
@@ -43,9 +44,7 @@ const App = props => {
       <SinglePack />
 
       <p>{`a [Pack] array`}</p>
-      <SinglePack />
-      <SinglePack />
-      <SinglePack />
+      <MultiPacks />
     </$App>
   );
 };

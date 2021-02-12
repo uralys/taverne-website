@@ -9,10 +9,16 @@ import App from './app';
 import singleSquareStore from './features/single-square/store-description';
 import singleRGBStore from './features/single-rgb/store-description';
 import singlePackStore from './features/single-pack/store-description';
+import multiPacksStore from './features/multi-packs/store-description';
 
 // -----------------------------------------------------------------------------
 
-const descriptions = {singlePackStore, singleRGBStore, singleSquareStore};
+const descriptions = {
+  singlePackStore,
+  singleRGBStore,
+  singleSquareStore,
+  multiPacksStore
+};
 
 // -----------------------------------------------------------------------------
 
