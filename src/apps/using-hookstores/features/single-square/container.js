@@ -11,7 +11,7 @@ import COLORS from '../../colors';
 
 // -----------------------------------------------------------------------------
 
-import {TOGGLE_SINGLE_SQUARE} from './store-description';
+import {TOGGLE_SINGLE_SQUARE} from './store';
 
 // -----------------------------------------------------------------------------
 

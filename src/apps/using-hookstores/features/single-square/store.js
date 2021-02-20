@@ -1,25 +1,25 @@
 // -----------------------------------------------------------------------------
 
-const TOGGLE_SINGLE_RGB_SQUARE = 'TOGGLE_SINGLE_RGB_SQUARE';
+const TOGGLE_SINGLE_SQUARE = 'TOGGLE_SINGLE_SQUARE';
+
+// -----------------------------------------------------------------------------
+
+const initialState = {clickCount: 0};
 
 // -----------------------------------------------------------------------------
 
 const toggleSquare = {
-  on: TOGGLE_SINGLE_RGB_SQUARE,
+  on: TOGGLE_SINGLE_SQUARE,
   reduce: (state, payload) => {
-    const {color} = payload;
-    state[color]++;
+    state.clickCount++;
   }
 };
 
 // -----------------------------------------------------------------------------
 
-const description = {
-  initialState: {r: 0, g: 0, b: 0},
-  middlewares: [toggleSquare]
-};
+const reactions = [toggleSquare];
 
 // -----------------------------------------------------------------------------
 
-export default description;
-export {TOGGLE_SINGLE_RGB_SQUARE};
+export default {initialState, reactions};
+export {TOGGLE_SINGLE_SQUARE};

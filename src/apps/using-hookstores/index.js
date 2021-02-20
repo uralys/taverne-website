@@ -6,14 +6,14 @@ import {Hookstores} from 'hookstores';
 // -----------------------------------------------------------------------------
 
 import App from './app';
-import singleSquareStore from './features/single-square/store-description';
-import singleRGBStore from './features/single-rgb/store-description';
-import singlePackStore from './features/single-pack/store-description';
-import multiPacksStore from './features/multi-packs/store-description';
+import singleSquareStore from './features/single-square/store';
+import singleRGBStore from './features/single-rgb/store';
+import singlePackStore from './features/single-pack/store';
+import multiPacksStore from './features/multi-packs/store';
 
 // -----------------------------------------------------------------------------
 
-const descriptions = {
+const stores = {
   singlePackStore,
   singleRGBStore,
   singleSquareStore,
@@ -27,7 +27,7 @@ const createApp = ({id}) => {
   const container = document.getElementById(id);
 
   render(
-    <Hookstores descriptions={descriptions}>
+    <Hookstores stores={stores} debug>
       <App id={id} />
     </Hookstores>,
     container
