@@ -13,10 +13,7 @@ import COLORS from '../../colors';
 
 // -----------------------------------------------------------------------------
 
-import {
-  multiPacksStore,
-  TOGGLE_SQUARE_IN_MULTI_PACKS
-} from './store-description';
+import {TOGGLE_SQUARE_IN_MULTI_PACKS} from './store-description';
 
 // -----------------------------------------------------------------------------
 
@@ -28,8 +25,8 @@ const propsMapper = (packNum, rgbNum) => color => ({
 
 const SquareContainer = props => {
   const {color, packNum, rgbNum, propsMapping} = props;
-  const {dispatch, useStore} = useHookstores();
-  const {clickCount} = useStore(multiPacksStore, propsMapping(color));
+  const {dispatch, useMultiPacksStore} = useHookstores();
+  const {clickCount} = useMultiPacksStore(propsMapping(color));
 
   return (
     <Square

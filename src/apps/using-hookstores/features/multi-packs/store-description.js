@@ -1,33 +1,15 @@
 // -----------------------------------------------------------------------------
 
-const multiPacksStore = 'multiPacksStore';
 const TOGGLE_SQUARE_IN_MULTI_PACKS = 'TOGGLE_SQUARE_IN_MULTI_PACKS';
 
 // -----------------------------------------------------------------------------
 
-const computeAction = async (currentState, action) => {
-  let newState;
-
-  switch (action.type) {
-    case TOGGLE_SQUARE_IN_MULTI_PACKS: {
-      const {packNum, rgbNum, color} = action;
-      newState = {
-        ...currentState,
-        [packNum]: {
-          ...currentState[packNum],
-          [rgbNum]: {
-            ...currentState[packNum][rgbNum],
-            [color]: currentState[packNum][rgbNum][color] + 1
-          }
-        }
-      };
-      break;
-    }
-    default:
-      newState = {...currentState};
+const toggleSquare = {
+  on: TOGGLE_SQUARE_IN_MULTI_PACKS,
+  reduce: (state, payload) => {
+    const {packNum, rgbNum, color} = payload;
+    state[packNum][rgbNum][color]++;
   }
-
-  return newState;
 };
 
 // -----------------------------------------------------------------------------
@@ -47,11 +29,10 @@ const initialState = [0, 1, 2, 3, 4, 5].reduce(
 
 const description = {
   initialState,
-  handledActions: [TOGGLE_SQUARE_IN_MULTI_PACKS],
-  computeAction
+  middlewares: [toggleSquare]
 };
 
 // -----------------------------------------------------------------------------
 
 export default description;
-export {multiPacksStore, TOGGLE_SQUARE_IN_MULTI_PACKS};
+export {TOGGLE_SQUARE_IN_MULTI_PACKS};

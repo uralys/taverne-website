@@ -11,7 +11,7 @@ import COLORS from '../../colors';
 
 // -----------------------------------------------------------------------------
 
-import {singleSquareStore, TOGGLE_SINGLE_SQUARE} from './store-description';
+import {TOGGLE_SINGLE_SQUARE} from './store-description';
 
 // -----------------------------------------------------------------------------
 
@@ -26,8 +26,8 @@ const propsMapping = {
 // -----------------------------------------------------------------------------
 
 const SingleSquare = props => {
-  const {dispatch, useStore} = useHookstores();
-  const {clickCount} = useStore(singleSquareStore, propsMapping);
+  const {dispatch, useSingleSquareStore} = useHookstores();
+  const {clickCount} = useSingleSquareStore(propsMapping);
 
   const toggle = () => {
     dispatch({

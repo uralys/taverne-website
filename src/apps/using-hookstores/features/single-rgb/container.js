@@ -12,7 +12,7 @@ import COLORS from '../../colors';
 
 // -----------------------------------------------------------------------------
 
-import {singleRGBStore, TOGGLE_SINGLE_RGB_SQUARE} from './store-description';
+import {TOGGLE_SINGLE_RGB_SQUARE} from './store-description';
 
 // -----------------------------------------------------------------------------
 
@@ -24,8 +24,8 @@ const propsMapping = color => ({
 
 const SquareContainer = props => {
   const {color} = props;
-  const {dispatch, useStore} = useHookstores();
-  const {clickCount} = useStore(singleRGBStore, propsMapping(color));
+  const {dispatch, useSingleRGBStore} = useHookstores();
+  const {clickCount} = useSingleRGBStore(propsMapping(color));
 
   return (
     <Square

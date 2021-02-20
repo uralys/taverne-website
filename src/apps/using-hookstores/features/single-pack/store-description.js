@@ -1,30 +1,15 @@
 // -----------------------------------------------------------------------------
 
-const singlePackStore = 'singlePackStore';
 const TOGGLE_SQUARE_IN_SINGLE_PACK = 'TOGGLE_SQUARE_IN_SINGLE_PACK';
 
 // -----------------------------------------------------------------------------
 
-const computeAction = async (currentState, action) => {
-  let newState;
-
-  switch (action.type) {
-    case TOGGLE_SQUARE_IN_SINGLE_PACK: {
-      const {num, color} = action;
-      newState = {
-        ...currentState,
-        [num]: {
-          ...currentState[num],
-          [color]: currentState[num][color] + 1
-        }
-      };
-      break;
-    }
-    default:
-      newState = {...currentState};
+const toggleSquare = {
+  on: TOGGLE_SQUARE_IN_SINGLE_PACK,
+  reduce: (state, payload) => {
+    const {num, color} = payload;
+    state[num][color]++;
   }
-
-  return newState;
 };
 
 // -----------------------------------------------------------------------------
@@ -38,11 +23,10 @@ const initialState = [0, 1, 2, 3, 4, 5].reduce(
 
 const description = {
   initialState,
-  handledActions: [TOGGLE_SQUARE_IN_SINGLE_PACK],
-  computeAction
+  middlewares: [toggleSquare]
 };
 
 // -----------------------------------------------------------------------------
 
 export default description;
-export {singlePackStore, TOGGLE_SQUARE_IN_SINGLE_PACK};
+export {TOGGLE_SQUARE_IN_SINGLE_PACK};
