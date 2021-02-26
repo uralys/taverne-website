@@ -1,7 +1,7 @@
 import 'regenerator-runtime/runtime';
 import React from 'react';
 import {render} from 'react-dom';
-import {Hookstores} from 'hookstores';
+import {createStores, Hookstores} from 'hookstores';
 
 // -----------------------------------------------------------------------------
 
@@ -13,21 +13,19 @@ import multiPacksStore from './features/multi-packs/store';
 
 // -----------------------------------------------------------------------------
 
-const stores = {
-  singlePackStore,
-  singleRGBStore,
-  singleSquareStore,
-  multiPacksStore
-};
-
-// -----------------------------------------------------------------------------
-
 const createApp = ({id}) => {
   console.log('👨‍🚀 creating demo using Hookstores');
   const container = document.getElementById(id);
 
+  const {dispatch, stores} = createStores({
+    singlePackStore,
+    singleRGBStore,
+    singleSquareStore,
+    multiPacksStore
+  });
+
   render(
-    <Hookstores stores={stores} debug>
+    <Hookstores dispatch={dispatch} stores={stores}>
       <App id={id} />
     </Hookstores>,
     container
