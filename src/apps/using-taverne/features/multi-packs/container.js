@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 
-import {useHookstores} from 'hookstores';
+import {useTaverne} from 'taverne/hooks';
 import React from 'react';
 
 // -----------------------------------------------------------------------------
@@ -13,20 +13,20 @@ import COLORS from '../../colors';
 
 // -----------------------------------------------------------------------------
 
-import {TOGGLE_SQUARE_IN_SINGLE_PACK} from './store';
+import {TOGGLE_SQUARE_IN_MULTI_PACKS} from './store';
 
 // -----------------------------------------------------------------------------
 
-const propsMapper = num => color => ({
-  clickCount: `${num}.${color}`
+const propsMapper = (packNum, rgbNum) => color => ({
+  clickCount: `${packNum}.${rgbNum}.${color}`
 });
 
 // -----------------------------------------------------------------------------
 
 const SquareContainer = props => {
-  const {color, num, propsMapping} = props;
-  const {dispatch, useSinglePackStore} = useHookstores();
-  const {clickCount} = useSinglePackStore(propsMapping(color));
+  const {color, packNum, rgbNum, propsMapping} = props;
+  const {dispatch, useMultiPacksStore} = useTaverne();
+  const {clickCount} = useMultiPacksStore(propsMapping(color));
 
   return (
     <Square
@@ -34,8 +34,9 @@ const SquareContainer = props => {
       clickCount={clickCount}
       onClick={() =>
         dispatch({
-          type: TOGGLE_SQUARE_IN_SINGLE_PACK,
-          num,
+          type: TOGGLE_SQUARE_IN_MULTI_PACKS,
+          packNum,
+          rgbNum,
           color
         })
       }
@@ -46,7 +47,7 @@ const SquareContainer = props => {
 // -----------------------------------------------------------------------------
 
 const RGBContainer = props => {
-  const {num} = props;
+  const {rgbNum, packNum} = props;
 
   return (
     <$RGB>
@@ -54,8 +55,9 @@ const RGBContainer = props => {
         <SquareContainer
           key={color}
           color={color}
-          num={num}
-          propsMapping={propsMapper(num)}
+          rgbNum={rgbNum}
+          packNum={packNum}
+          propsMapping={propsMapper(packNum, rgbNum)}
         />
       ))}
     </$RGB>
@@ -64,11 +66,11 @@ const RGBContainer = props => {
 
 // -----------------------------------------------------------------------------
 
-const SinglePack = props => {
+const PackContainer = ({packNum}) => {
   return (
     <$Pack>
-      {[0, 1, 2, 3, 4].map(num => (
-        <RGBContainer key={`rgb-${num}`} num={num} />
+      {[0, 1, 2, 3, 4].map(rgbNum => (
+        <RGBContainer key={`rgb-${rgbNum}`} rgbNum={rgbNum} packNum={packNum} />
       ))}
     </$Pack>
   );
@@ -76,4 +78,16 @@ const SinglePack = props => {
 
 // -----------------------------------------------------------------------------
 
-export default SinglePack;
+const MultiPacks = props => {
+  return (
+    <>
+      {[0, 1, 2, 3, 4].map(packNum => (
+        <PackContainer key={`pack-${packNum}`} packNum={packNum} />
+      ))}
+    </>
+  );
+};
+
+// -----------------------------------------------------------------------------
+
+export default MultiPacks;

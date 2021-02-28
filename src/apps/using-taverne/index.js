@@ -1,8 +1,9 @@
 import 'regenerator-runtime/runtime';
 import React from 'react';
 import {render} from 'react-dom';
-import {createStores, Hookstores} from 'hookstores';
-import {devtools} from 'hookstores/middlewares';
+import createStores from 'taverne';
+import {Taverne} from 'taverne/hooks';
+import {devtools} from 'taverne/middlewares';
 
 // -----------------------------------------------------------------------------
 
@@ -15,7 +16,7 @@ import multiPacksStore from './features/multi-packs/store';
 // -----------------------------------------------------------------------------
 
 const createApp = ({id}) => {
-  console.log('👨‍🚀 creating demo using Hookstores');
+  console.log('👨‍🚀 creating demo using La Taverne');
   const container = document.getElementById(id);
 
   const {dispatch, stores} = createStores(
@@ -29,9 +30,9 @@ const createApp = ({id}) => {
   );
 
   render(
-    <Hookstores dispatch={dispatch} stores={stores}>
+    <Taverne dispatch={dispatch} stores={stores}>
       <App id={id} />
-    </Hookstores>,
+    </Taverne>,
     container
   );
 };

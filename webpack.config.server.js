@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   mode: 'development',
   entry: {
-    usingHookstores: './src/apps/using-hookstores/index.js'
+    usingTaverne: './src/apps/using-taverne/index.js'
   },
   devtool: 'inline-source-map',
   module: {

@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 
-import {useHookstores} from 'hookstores';
+import {useTaverne} from 'taverne/hooks';
 import React from 'react';
 
 // -----------------------------------------------------------------------------
@@ -24,7 +24,7 @@ const propsMapping = color => ({
 
 const SquareContainer = props => {
   const {color} = props;
-  const {dispatch, useSingleRGBStore} = useHookstores();
+  const {dispatch, useSingleRGBStore} = useTaverne();
   const {clickCount} = useSingleRGBStore(propsMapping(color));
 
   return (

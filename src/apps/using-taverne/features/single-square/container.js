@@ -5,7 +5,7 @@ import React from 'react';
 // -----------------------------------------------------------------------------
 // common components and settings
 
-import {useHookstores} from 'hookstores';
+import {useTaverne} from 'taverne/hooks';
 import Square from '../../../../components/square';
 import COLORS from '../../colors';
 
@@ -26,7 +26,7 @@ const propsMapping = {
 // -----------------------------------------------------------------------------
 
 const SingleSquare = props => {
-  const {dispatch, useSingleSquareStore} = useHookstores();
+  const {dispatch, useSingleSquareStore} = useTaverne();
   const {clickCount} = useSingleSquareStore(propsMapping);
 
   const toggle = () => {
