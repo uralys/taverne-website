@@ -31,7 +31,7 @@ const App = props => {
 
   return (
     <$App>
-      <h2>Hookstores demo</h2>
+      <h2>La Taverne demo</h2>
       <GithubCorner />
 
       <p>{`one Square`}</p>

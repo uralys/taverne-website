@@ -1,7 +1,7 @@
 import 'regenerator-runtime/runtime';
 import React from 'react';
 import {render} from 'react-dom';
-import createStores from 'taverne';
+import createLaTaverne from 'taverne';
 import {Taverne} from 'taverne/hooks';
 import {devtools} from 'taverne/middlewares';
 
@@ -19,7 +19,7 @@ const createApp = ({id}) => {
   console.log('👨‍🚀 creating demo using La Taverne');
   const container = document.getElementById(id);
 
-  const {dispatch, stores} = createStores(
+  const {dispatch, stores} = createLaTaverne(
     {
       singlePackStore,
       singleRGBStore,
