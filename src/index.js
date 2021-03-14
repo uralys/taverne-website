@@ -4,6 +4,7 @@ import {render} from 'react-dom';
 import createLaTaverne from 'taverne';
 import {Taverne} from 'taverne/hooks';
 import {devtools} from 'taverne/middlewares';
+import {createGlobalStyle} from 'styled-components';
 
 // -----------------------------------------------------------------------------
 
@@ -12,6 +13,15 @@ import singleSquare from './features/single-square/store';
 import singleRGB from './features/single-rgb/store';
 import singlePack from './features/single-pack/store';
 import multiPacks from './features/multi-packs/store';
+
+// -----------------------------------------------------------------------------
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+  }
+`;
 
 // -----------------------------------------------------------------------------
 
@@ -31,6 +41,7 @@ const createApp = ({id}) => {
 
   render(
     <Taverne dispatch={dispatch} store={store}>
+      <GlobalStyle />
       <App id={id} />
     </Taverne>,
     container
