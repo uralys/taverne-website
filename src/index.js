@@ -8,10 +8,10 @@ import {devtools} from 'taverne/middlewares';
 // -----------------------------------------------------------------------------
 
 import App from './app';
-import singleSquareStore from './features/single-square/store';
-import singleRGBStore from './features/single-rgb/store';
-import singlePackStore from './features/single-pack/store';
-import multiPacksStore from './features/multi-packs/store';
+import singleSquare from './features/single-square/store';
+import singleRGB from './features/single-rgb/store';
+import singlePack from './features/single-pack/store';
+import multiPacks from './features/multi-packs/store';
 
 // -----------------------------------------------------------------------------
 
@@ -19,18 +19,18 @@ const createApp = ({id}) => {
   console.log('👨‍🚀 creating demo using La Taverne');
   const container = document.getElementById(id);
 
-  const {dispatch, stores} = createLaTaverne(
+  const {dispatch, store} = createLaTaverne(
     {
-      singlePackStore,
-      singleRGBStore,
-      singleSquareStore,
-      multiPacksStore
+      singlePack,
+      singleRGB,
+      singleSquare,
+      multiPacks
     },
     [devtools]
   );
 
   render(
-    <Taverne dispatch={dispatch} stores={stores}>
+    <Taverne dispatch={dispatch} store={store}>
       <App id={id} />
     </Taverne>,
     container

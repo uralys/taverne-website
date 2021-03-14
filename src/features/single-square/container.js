@@ -19,15 +19,9 @@ const GREEN = COLORS.g;
 
 // -----------------------------------------------------------------------------
 
-const propsMapping = {
-  clickCount: 'clickCount'
-};
-
-// -----------------------------------------------------------------------------
-
 const SingleSquare = props => {
-  const {dispatch, useSingleSquareStore} = useTaverne();
-  const {clickCount} = useSingleSquareStore(propsMapping);
+  const {dispatch, pour} = useTaverne();
+  const clickCount = pour('singleSquare.clickCount');
 
   const toggle = () => {
     dispatch({

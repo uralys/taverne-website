@@ -17,16 +17,10 @@ import {TOGGLE_SQUARE_IN_SINGLE_PACK} from './store';
 
 // -----------------------------------------------------------------------------
 
-const propsMapper = num => color => ({
-  clickCount: `${num}.${color}`
-});
-
-// -----------------------------------------------------------------------------
-
 const SquareContainer = props => {
-  const {color, num, propsMapping} = props;
-  const {dispatch, useSinglePackStore} = useTaverne();
-  const {clickCount} = useSinglePackStore(propsMapping(color));
+  const {color, num} = props;
+  const {dispatch, pour} = useTaverne();
+  const clickCount = pour(`singlePack.${num}.${color}`);
 
   return (
     <Square
@@ -51,12 +45,7 @@ const RGBContainer = props => {
   return (
     <$RGB>
       {['r', 'g', 'b'].map(color => (
-        <SquareContainer
-          key={color}
-          color={color}
-          num={num}
-          propsMapping={propsMapper(num)}
-        />
+        <SquareContainer key={color} color={color} num={num} />
       ))}
     </$RGB>
   );

@@ -8,6 +8,7 @@ const $Square = styled.div`
   margin: 0 2px;
   box-sizing: border-box;
   cursor: pointer;
+  user-select: none;
   width: 100%;
   max-width: 100px;
   height: 60px;
@@ -53,7 +54,7 @@ class Square extends React.Component {
   render() {
     const {onClick, color, clickCount} = this.props;
     if (clickCount === undefined) {
-      return <h5>todo</h5>;
+      return <h5>clickCount is not plugged</h5>;
     }
 
     this.nbRenders++;

@@ -17,16 +17,10 @@ import {TOGGLE_SQUARE_IN_MULTI_PACKS} from './store';
 
 // -----------------------------------------------------------------------------
 
-const propsMapper = (packNum, rgbNum) => color => ({
-  clickCount: `${packNum}.${rgbNum}.${color}`
-});
-
-// -----------------------------------------------------------------------------
-
 const SquareContainer = props => {
-  const {color, packNum, rgbNum, propsMapping} = props;
-  const {dispatch, useMultiPacksStore} = useTaverne();
-  const {clickCount} = useMultiPacksStore(propsMapping(color));
+  const {color, packNum, rgbNum} = props;
+  const {dispatch, pour} = useTaverne();
+  const clickCount = pour(`multiPacks.${packNum}.${rgbNum}.${color}`);
 
   return (
     <Square
@@ -57,7 +51,6 @@ const RGBContainer = props => {
           color={color}
           rgbNum={rgbNum}
           packNum={packNum}
-          propsMapping={propsMapper(packNum, rgbNum)}
         />
       ))}
     </$RGB>

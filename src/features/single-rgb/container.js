@@ -16,16 +16,10 @@ import {TOGGLE_SINGLE_RGB_SQUARE} from './store';
 
 // -----------------------------------------------------------------------------
 
-const propsMapping = color => ({
-  clickCount: color
-});
-
-// -----------------------------------------------------------------------------
-
 const SquareContainer = props => {
   const {color} = props;
-  const {dispatch, useSingleRGBStore} = useTaverne();
-  const {clickCount} = useSingleRGBStore(propsMapping(color));
+  const {dispatch, pour} = useTaverne();
+  const clickCount = pour(`singleRGB.${color}`);
 
   return (
     <Square
