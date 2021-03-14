@@ -6,27 +6,27 @@ import React from 'react';
 // -----------------------------------------------------------------------------
 // common components and settings
 
-import $Pack from '../../../../components/pack';
-import $RGB from '../../../../components/rgb';
-import Square from '../../../../components/square';
+import $Pack from '../../components/pack';
+import $RGB from '../../components/rgb';
+import Square from '../../components/square';
 import COLORS from '../../colors';
 
 // -----------------------------------------------------------------------------
 
-import {TOGGLE_SQUARE_IN_MULTI_PACKS} from './store';
+import {TOGGLE_SQUARE_IN_SINGLE_PACK} from './store';
 
 // -----------------------------------------------------------------------------
 
-const propsMapper = (packNum, rgbNum) => color => ({
-  clickCount: `${packNum}.${rgbNum}.${color}`
+const propsMapper = num => color => ({
+  clickCount: `${num}.${color}`
 });
 
 // -----------------------------------------------------------------------------
 
 const SquareContainer = props => {
-  const {color, packNum, rgbNum, propsMapping} = props;
-  const {dispatch, useMultiPacksStore} = useTaverne();
-  const {clickCount} = useMultiPacksStore(propsMapping(color));
+  const {color, num, propsMapping} = props;
+  const {dispatch, useSinglePackStore} = useTaverne();
+  const {clickCount} = useSinglePackStore(propsMapping(color));
 
   return (
     <Square
@@ -34,9 +34,8 @@ const SquareContainer = props => {
       clickCount={clickCount}
       onClick={() =>
         dispatch({
-          type: TOGGLE_SQUARE_IN_MULTI_PACKS,
-          packNum,
-          rgbNum,
+          type: TOGGLE_SQUARE_IN_SINGLE_PACK,
+          num,
           color
         })
       }
@@ -47,7 +46,7 @@ const SquareContainer = props => {
 // -----------------------------------------------------------------------------
 
 const RGBContainer = props => {
-  const {rgbNum, packNum} = props;
+  const {num} = props;
 
   return (
     <$RGB>
@@ -55,9 +54,8 @@ const RGBContainer = props => {
         <SquareContainer
           key={color}
           color={color}
-          rgbNum={rgbNum}
-          packNum={packNum}
-          propsMapping={propsMapper(packNum, rgbNum)}
+          num={num}
+          propsMapping={propsMapper(num)}
         />
       ))}
     </$RGB>
@@ -66,11 +64,11 @@ const RGBContainer = props => {
 
 // -----------------------------------------------------------------------------
 
-const PackContainer = ({packNum}) => {
+const SinglePack = props => {
   return (
     <$Pack>
-      {[0, 1, 2, 3, 4].map(rgbNum => (
-        <RGBContainer key={`rgb-${rgbNum}`} rgbNum={rgbNum} packNum={packNum} />
+      {[0, 1, 2, 3, 4].map(num => (
+        <RGBContainer key={`rgb-${num}`} num={num} />
       ))}
     </$Pack>
   );
@@ -78,16 +76,4 @@ const PackContainer = ({packNum}) => {
 
 // -----------------------------------------------------------------------------
 
-const MultiPacks = props => {
-  return (
-    <>
-      {[0, 1, 2, 3, 4].map(packNum => (
-        <PackContainer key={`pack-${packNum}`} packNum={packNum} />
-      ))}
-    </>
-  );
-};
-
-// -----------------------------------------------------------------------------
-
-export default MultiPacks;
+export default SinglePack;

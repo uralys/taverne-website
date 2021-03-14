@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import GithubCorner from '../../components/github-corner';
+import GithubCorner from './components/github-corner';
 import SingleSquare from './features/single-square/container';
 import SingleRGB from './features/single-rgb/container';
 import SinglePack from './features/single-pack/container';

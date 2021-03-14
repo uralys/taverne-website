@@ -6,8 +6,8 @@ import React from 'react';
 // -----------------------------------------------------------------------------
 // common components and settings
 
-import $RGB from '../../../../components/rgb';
-import Square from '../../../../components/square';
+import $RGB from '../../components/rgb';
+import Square from '../../components/square';
 import COLORS from '../../colors';
 
 // -----------------------------------------------------------------------------

@@ -42,5 +42,3 @@ const createApp = ({id}) => {
 if (window && !window.createApp) {
   window.createApp = createApp;
 }
-
-export default createApp;
