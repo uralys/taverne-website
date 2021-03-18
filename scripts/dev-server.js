@@ -3,6 +3,7 @@ const esbuild = require('esbuild');
 const liveServer = require('live-server');
 const historyApiFallback = require('connect-history-api-fallback');
 const svgrPlugin = require('esbuild-plugin-svgr');
+const {markdownPlugin} = require('esbuild-plugin-markdown');
 
 const PUBLIC = 'public';
 
@@ -17,7 +18,7 @@ esbuild
     bundle: true,
     sourcemap: true,
     watch: true,
-    plugins: [svgrPlugin()],
+    plugins: [svgrPlugin(), markdownPlugin()],
     define: {
       'process.env.NODE_ENV': '"development"',
       global: 'globalThis'

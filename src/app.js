@@ -10,6 +10,7 @@ import MultiPacks from './features/multi-packs/container';
 
 // -----------------------------------------------------------------------------
 
+import explanations from '../docs/explanations.md';
 import instanciate from '../resources/instanciate';
 import oneSquareReaction from '../resources/one-square-reaction';
 
@@ -32,7 +33,17 @@ const $App = styled.div`
     props.multiLayout &&
     `
     padding-top: 150px;
-  `}
+    `}
+`;
+
+const $Markup = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: calc(12px + 1vmin);
+  padding: 30px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 820px;
 `;
 
 // -----------------------------------------------------------------------------
@@ -45,6 +56,9 @@ const App = props => {
   return (
     <$App multiLayout={multiLayout}>
       {!multiLayout && <h2>La Taverne demo</h2>}
+
+      <$Markup dangerouslySetInnerHTML={{__html: explanations.html}}></$Markup>
+
       <GithubCorner />
       {showCode && <p>{`Instanciate La Taverne`}</p>}
       {showCode && <Prism code={instanciate} />}
