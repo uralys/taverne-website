@@ -43,7 +43,11 @@ const $Markup = styled.div`
   padding: 30px;
   box-sizing: border-box;
   width: 100%;
-  max-width: 820px;
+  max-width: 620px;
+
+  pre {
+    font-size: calc(7px + 1vmin);
+  }
 `;
 
 // -----------------------------------------------------------------------------
