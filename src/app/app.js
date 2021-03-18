@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import GithubCorner from './components/github-corner';
-import Prism from './components/prism';
+import GithubCorner from '../components/github-corner';
+import Prism from '../components/prism';
 import SingleSquare from './features/single-square/container';
 import SingleRGB from './features/single-rgb/container';
 import SinglePack from './features/single-pack/container';
@@ -10,9 +10,9 @@ import MultiPacks from './features/multi-packs/container';
 
 // -----------------------------------------------------------------------------
 
-import explanations from '../docs/explanations.md';
-import instanciate from '../resources/instanciate';
-import oneSquareReaction from '../resources/one-square-reaction';
+import explanations from '../../docs/explanations.md';
+import instanciate from '../../resources/instanciate';
+import oneSquareReaction from '../../resources/one-square-reaction';
 
 // -----------------------------------------------------------------------------
 
@@ -53,8 +53,8 @@ const $Markup = styled.div`
 // -----------------------------------------------------------------------------
 
 const App = props => {
-  const {id: appId, multiLayout} = props;
-  console.log(`☢️ creating App ${appId}, multiLayout: ${multiLayout}`);
+  const {multiLayout} = props;
+  console.log(`☢️ creating App multiLayout: ${multiLayout}`);
   const showCode = !multiLayout;
 
   return (

@@ -6,8 +6,8 @@ import React from 'react';
 // common components and settings
 
 import {useTaverne} from 'taverne/hooks';
-import Square from '../../components/square';
-import COLORS from '../../colors';
+import Square from '../../../components/square';
+import COLORS from '../../../colors';
 
 // -----------------------------------------------------------------------------
 
