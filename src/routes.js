@@ -14,6 +14,7 @@ import Doc from './pages/docs';
 const Routes = () => (
   <Switch>
     <Route path="/" exact component={Doc} />
+    <Route path="/docs" exact component={Doc} />
     <Route path="/demo" component={Demo} />
     <Route path="/multi" component={DemoMultiScope} />
   </Switch>

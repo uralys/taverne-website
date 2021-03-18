@@ -1,7 +1,7 @@
 import 'regenerator-runtime/runtime';
 import React from 'react';
 import {render} from 'react-dom';
-import {BrowserRouter as Router} from 'react-router-dom';
+import {useHistory, BrowserRouter as Router} from 'react-router-dom';
 import {createGlobalStyle} from 'styled-components';
 
 // -----------------------------------------------------------------------------
@@ -25,12 +25,39 @@ const GlobalStyle = createGlobalStyle`
 
 // -----------------------------------------------------------------------------
 
+const Menu = () => {
+  const history = useHistory();
+
+  const openDocs = () => {
+    history.push('/docs');
+  };
+
+  const openDemo = () => {
+    history.push('/demo');
+  };
+
+  const openMulti = () => {
+    history.push('/multi');
+  };
+
+  return (
+    <>
+      <p onClick={openDocs}>docs</p>
+      <p onClick={openDemo}>demo</p>
+      <p onClick={openMulti}>multi</p>
+    </>
+  );
+};
+
+// -----------------------------------------------------------------------------
+
 const createSite = ({id}) => {
   const container = document.getElementById(id);
 
   render(
     <Router>
       <GlobalStyle />
+      <Menu />
       <Routes />
     </Router>,
     container
