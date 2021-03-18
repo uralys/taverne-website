@@ -9,10 +9,10 @@ import {createGlobalStyle} from 'styled-components';
 // -----------------------------------------------------------------------------
 
 import App from './app';
-import singleSquare from './features/single-square/store';
-import singleRGB from './features/single-rgb/store';
-import singlePack from './features/single-pack/store';
-import multiPacks from './features/multi-packs/store';
+import singleSquare from './features/single-square/reducer';
+import singleRGB from './features/single-rgb/reducer';
+import singlePack from './features/single-pack/reducer';
+import multiPacks from './features/multi-packs/reducer';
 
 // -----------------------------------------------------------------------------
 
@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
 
 // -----------------------------------------------------------------------------
 
-const createApp = ({id}) => {
+const createApp = ({id, multiLayout}) => {
   console.log('👨‍🚀 creating demo using La Taverne');
   const container = document.getElementById(id);
 
@@ -42,7 +42,7 @@ const createApp = ({id}) => {
   render(
     <Taverne dispatch={dispatch} store={store}>
       <GlobalStyle />
-      <App id={id} />
+      <App id={id} multiLayout={multiLayout} />
     </Taverne>,
     container
   );

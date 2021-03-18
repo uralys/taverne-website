@@ -1,16 +1,33 @@
 <html>
   <head>
-    <title>Sandbox - Demo hookstores</title>
+    <title>La Taverne: multi apps</title>
+    <link href="/app.min.css" rel="stylesheet" />
   </head>
   <body>
     <script src="/app.min.js"></script>
     <div id="root">
       <div id="app1"></div>
       <div id="app2"></div>
+      <div class="context">
+        <h2>La Taverne demo: multi apps</h2>
+        <p>This demo integrates twice the same App.</p>
+        <p>All stores are properly scoped.</p>
+      </div>
     </div>
 
     <style>
       body {
+        margin: 0;
+      }
+      .context {
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        color: #dedede;
+        font-size: 20px;
+      }
+      .context p {
+        padding: 0;
         margin: 0;
       }
       #root {
@@ -25,8 +42,8 @@
     </style>
 
     <script>
-      createApp({id: 'app1'});
-      createApp({id: 'app2'});
+      createApp({id: 'app1', multiLayout: true});
+      createApp({id: 'app2', multiLayout: true});
     </script>
   </body>
 </html>

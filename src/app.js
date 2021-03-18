@@ -2,10 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 import GithubCorner from './components/github-corner';
+import Prism from './components/prism';
 import SingleSquare from './features/single-square/container';
 import SingleRGB from './features/single-rgb/container';
 import SinglePack from './features/single-pack/container';
 import MultiPacks from './features/multi-packs/container';
+
+// -----------------------------------------------------------------------------
+
+import instanciate from '../resources/instanciate';
+import oneSquareReaction from '../resources/one-square-reaction';
 
 // -----------------------------------------------------------------------------
 
@@ -21,21 +27,31 @@ const $App = styled.div`
   font-size: calc(10px + 2vmin);
   position: relative;
   overflow: hidden;
+
+  ${props =>
+    props.multiLayout &&
+    `
+    padding-top: 150px;
+  `}
 `;
 
 // -----------------------------------------------------------------------------
 
 const App = props => {
-  const {id: appId} = props;
-  console.log(`☢️ creating App ${appId}`);
+  const {id: appId, multiLayout} = props;
+  console.log(`☢️ creating App ${appId}, multiLayout: ${multiLayout}`);
+  const showCode = !multiLayout;
 
   return (
-    <$App>
-      <h2>La Taverne demo</h2>
+    <$App multiLayout={multiLayout}>
+      {!multiLayout && <h2>La Taverne demo</h2>}
       <GithubCorner />
+      {showCode && <p>{`Instanciate La Taverne`}</p>}
+      {showCode && <Prism code={instanciate} />}
 
       <p>{`one Square`}</p>
       <SingleSquare />
+      {showCode && <Prism code={oneSquareReaction} />}
 
       <p>{`one RGB`}</p>
       <SingleRGB />

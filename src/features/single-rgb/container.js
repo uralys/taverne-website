@@ -12,7 +12,7 @@ import COLORS from '../../colors';
 
 // -----------------------------------------------------------------------------
 
-import {TOGGLE_SINGLE_RGB_SQUARE} from './store';
+import {TOGGLE_SINGLE_RGB_SQUARE} from './reducer';
 
 // -----------------------------------------------------------------------------
 

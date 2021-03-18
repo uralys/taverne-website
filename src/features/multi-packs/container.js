@@ -13,7 +13,7 @@ import COLORS from '../../colors';
 
 // -----------------------------------------------------------------------------
 
-import {TOGGLE_SQUARE_IN_MULTI_PACKS} from './store';
+import {TOGGLE_SQUARE_IN_MULTI_PACKS} from './reducer';
 
 // -----------------------------------------------------------------------------
 
