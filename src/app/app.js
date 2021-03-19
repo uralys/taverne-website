@@ -20,10 +20,7 @@ const $App = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: #282c34;
-  color: #ededed;
   min-height: 100vh;
-  font-size: calc(10px + 2vmin);
   position: relative;
   overflow: hidden;
 
