@@ -16,7 +16,7 @@ const StyledCorner = styled.a`
   top: 0;
   right: 0;
 
-  :hover .github-corner_svg__octo-arm {
+  :hover .octo-arm {
     animation: octocat-wave 560ms ease-in-out;
   }
 
@@ -36,10 +36,10 @@ const StyledCorner = styled.a`
   }
 
   @media (max-width: 500px) {
-    &:hover .github-corner_svg__octo-arm {
+    &:hover .octo-arm {
       animation: none;
     }
-    & .github-corner_svg__octo-arm {
+    & .octo-arm {
       animation: octocat-wave 560ms ease-in-out;
     }
   }
@@ -49,7 +49,7 @@ const StyledCorner = styled.a`
 
 const Corner = () => (
   <StyledCorner
-    href="https://github.com/uralys/hookstores"
+    href="https://github.com/uralys/taverne"
     target="__blank"
     aria-label="View source on GitHub"
   >

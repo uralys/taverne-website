@@ -6,6 +6,7 @@ import {createGlobalStyle} from 'styled-components';
 
 // -----------------------------------------------------------------------------
 
+import GithubCorner from './components/github-corner';
 import Routes from './routes';
 
 // -----------------------------------------------------------------------------
@@ -56,6 +57,7 @@ const createSite = ({id}) => {
 
   render(
     <Router>
+      <GithubCorner />
       <GlobalStyle />
       <Menu />
       <Routes />

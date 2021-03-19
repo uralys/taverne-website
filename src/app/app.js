@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import GithubCorner from '../components/github-corner';
 import Prism from '../components/prism';
 import SingleSquare from './features/single-square/container';
 import SingleRGB from './features/single-rgb/container';
@@ -10,8 +9,8 @@ import MultiPacks from './features/multi-packs/container';
 
 // -----------------------------------------------------------------------------
 
-import instanciate from '../../resources/instanciate';
-import oneSquareReaction from '../../resources/one-square-reaction';
+import instanciate from '../resources/instanciate';
+import oneSquareReaction from '../resources/one-square-reaction';
 
 // -----------------------------------------------------------------------------
 
@@ -46,7 +45,6 @@ const App = props => {
     <$App multiLayout={multiLayout}>
       {!multiLayout && <h2>La Taverne demo</h2>}
 
-      <GithubCorner />
       {showCode && <p>{`Instanciate La Taverne`}</p>}
       {showCode && <Prism code={instanciate} />}
 

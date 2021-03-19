@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import explanations from '../../../docs/explanations.md';
+import explanations from '../../resources/explanations.md';
 
 const $Markup = styled.div`
   display: flex;
