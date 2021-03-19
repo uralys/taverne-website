@@ -42,7 +42,10 @@ const buildApp = ({format, minify, compress}) => {
       sourcemap: true,
       metafile: true,
       outfile,
-      loader: {'.js': 'jsx'},
+      loader: {
+        '.js': 'jsx',
+        '.md': 'text'
+      },
       plugins: [svgrPlugin()],
       define: {
         'process.env.NODE_ENV': '"production"',
