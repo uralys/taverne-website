@@ -3,7 +3,6 @@ const esbuild = require('esbuild');
 const liveServer = require('live-server');
 const historyApiFallback = require('connect-history-api-fallback');
 const svgrPlugin = require('esbuild-plugin-svgr');
-const {markdownPlugin} = require('esbuild-plugin-markdown');
 
 const PUBLIC = 'public';
 
@@ -13,12 +12,13 @@ esbuild
     outfile: 'public/app.min.js',
     format: 'cjs',
     loader: {
-      '.js': 'jsx'
+      '.js': 'jsx',
+      '.md': 'text'
     },
     bundle: true,
     sourcemap: true,
     watch: true,
-    plugins: [svgrPlugin(), markdownPlugin()],
+    plugins: [svgrPlugin()],
     define: {
       'process.env.NODE_ENV': '"development"',
       global: 'globalThis'

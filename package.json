@@ -13,6 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "marked": "^2.0.1",
     "prismjs": "^1.23.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -29,7 +30,6 @@
     "chalk": "^2.4.2",
     "connect-history-api-fallback": "^1.6.0",
     "esbuild": "^0.9.2",
-    "esbuild-plugin-markdown": "^0.0.3",
     "esbuild-plugin-svgr": "^0.0.1",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",

@@ -4,7 +4,7 @@ import 'prismjs/themes/prism-okaidia.css';
 
 const Prism = ({
   code,
-  component: Component = 'code',
+  component: Component = 'pre',
   className = 'language-javascript'
 }) => {
   const container = useRef(null);

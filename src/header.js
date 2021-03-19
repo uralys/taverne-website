@@ -16,7 +16,7 @@ const $HeaderWrapper = styled.div`
   justify-content: center;
   padding: 0 20px;
   box-sizing: border-box;
-  background-color: #1d1d1d;
+  background-color: #571d91;
   color: rgb(231, 230, 228);
 `;
 
@@ -71,9 +71,7 @@ const Header = () => {
   return (
     <$HeaderWrapper>
       <$Header>
-        <$Title>
-          <p>La Taverne</p>
-        </$Title>
+        <$Title>La Taverne</$Title>
         <$Links>
           <p onClick={openDocs}>docs</p>
           <p onClick={openDemo}>demo</p>
