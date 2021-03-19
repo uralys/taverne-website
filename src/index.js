@@ -3,7 +3,7 @@ import 'regenerator-runtime/runtime';
 import React from 'react';
 import {render} from 'react-dom';
 import {BrowserRouter as Router} from 'react-router-dom';
-import {createGlobalStyle} from 'styled-components';
+import styled, {createGlobalStyle} from 'styled-components';
 
 // -----------------------------------------------------------------------------
 
@@ -17,13 +17,17 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    background-color: #282c34;
-    color: #ededed;
+    background-color: #ededed;
   }
+`;
 
-  #root pre  {
-    font-size: calc(7px + 1vmin);
-  }
+const $MainWrapper = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 0 20px;
 `;
 
 // -----------------------------------------------------------------------------
@@ -35,8 +39,10 @@ const createSite = ({id}) => {
     <Router>
       <GlobalStyle />
       <Header />
-      <Navigation />
-      <Views />
+      <$MainWrapper>
+        <Navigation />
+        <Views />
+      </$MainWrapper>
     </Router>,
     container
   );

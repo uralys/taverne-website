@@ -1,5 +1,3 @@
-<img src="https://raw.githubusercontent.com/uralys/taverne/master/docs/taverne.png">
-
 `La Taverne` is an elementary [Flux](https://facebook.github.io/flux/docs/in-depth-overview) implementation to manage a global app state.
 
 It provides an optional, yet easy integration with React using custom **hooks**.

@@ -11,16 +11,13 @@ const $Markup = styled.div`
   box-sizing: border-box;
   width: 100%;
   max-width: 620px;
-
-  pre {
-    font-size: calc(7px + 1vmin);
-  }
 `;
 
 const Doc = () => (
-  <pre>
+  <>
+    {/* <img src="https://raw.githubusercontent.com/uralys/taverne/master/docs/taverne.png"></img> */}
     <$Markup dangerouslySetInnerHTML={{__html: explanations.html}}></$Markup>
-  </pre>
+  </>
 );
 
 export default Doc;

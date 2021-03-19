@@ -9,6 +9,7 @@ import styled from 'styled-components';
 const $HeaderWrapper = styled.div`
   position: fixed;
   top: 0;
+  z-index: 9999;
   width: 100%;
   height: 50px;
   display: flex;
