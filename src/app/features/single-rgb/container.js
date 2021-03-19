@@ -8,7 +8,7 @@ import React from 'react';
 
 import $RGB from '../../../components/rgb';
 import Square from '../../../components/square';
-import COLORS from '../../../colors';
+import COLORS from '../../../style/colors';
 
 // -----------------------------------------------------------------------------
 

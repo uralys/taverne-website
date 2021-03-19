@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import Demo from './pages/demo';
 import DemoMultiScope from './pages/demo-multi-scope';
 import Doc from './pages/docs';
+import {device} from './style/breakpoints';
 
 // -----------------------------------------------------------------------------
 
@@ -19,7 +20,11 @@ const $ViewWrapper = styled.div`
   min-width: 0;
   position: relative;
   margin: 0 24px;
-  padding: 40px 0;
+  padding: 0;
+
+  @media ${device.tablet} {
+    padding: 40px 0;
+  }
 `;
 
 // -----------------------------------------------------------------------------
