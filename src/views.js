@@ -11,7 +11,7 @@ import Doc from './pages/docs';
 
 // -----------------------------------------------------------------------------
 
-const Routes = () => (
+const Views = () => (
   <Switch>
     <Route path="/" exact component={Doc} />
     <Route path="/docs" exact component={Doc} />
@@ -22,4 +22,4 @@ const Routes = () => (
 
 // -----------------------------------------------------------------------------
 
-export default Routes;
+export default Views;

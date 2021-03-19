@@ -1,13 +1,15 @@
 import 'regenerator-runtime/runtime';
+
 import React from 'react';
 import {render} from 'react-dom';
-import {useHistory, BrowserRouter as Router} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 import {createGlobalStyle} from 'styled-components';
 
 // -----------------------------------------------------------------------------
 
-import GithubCorner from './components/github-corner';
-import Routes from './routes';
+import Views from './views';
+import Navigation from './navigation';
+import Header from './header';
 
 // -----------------------------------------------------------------------------
 
@@ -26,41 +28,15 @@ const GlobalStyle = createGlobalStyle`
 
 // -----------------------------------------------------------------------------
 
-const Menu = () => {
-  const history = useHistory();
-
-  const openDocs = () => {
-    history.push('/docs');
-  };
-
-  const openDemo = () => {
-    history.push('/demo');
-  };
-
-  const openMulti = () => {
-    history.push('/multi');
-  };
-
-  return (
-    <>
-      <p onClick={openDocs}>docs</p>
-      <p onClick={openDemo}>demo</p>
-      <p onClick={openMulti}>multi</p>
-    </>
-  );
-};
-
-// -----------------------------------------------------------------------------
-
 const createSite = ({id}) => {
   const container = document.getElementById(id);
 
   render(
     <Router>
-      <GithubCorner />
       <GlobalStyle />
-      <Menu />
-      <Routes />
+      <Header />
+      <Navigation />
+      <Views />
     </Router>,
     container
   );
