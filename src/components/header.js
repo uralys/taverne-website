@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------------
 
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, NavLink, useHistory} from 'react-router-dom';
 import styled from 'styled-components';
 import {device} from '../style/breakpoints';
 import {primary} from '../style/colors';
@@ -33,11 +33,19 @@ const $Header = styled.header`
   align-items: center;
 `;
 
-const $Title = styled.p`
+const $Title = styled.div`
   color: ${primary};
   font-size: 19px;
   margin: 0;
   padding: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  img {
+    height: 48px;
+    margin-right: 10px;
+  }
 
   @media ${device.tablet} {
     font-size: 30px;
@@ -63,19 +71,42 @@ const $Links = styled.div`
     &:hover {
       color: #444;
     }
+
+    &.active {
+      background-color: ${primary};
+      color: #fff;
+      border-radius: 5px;
+      padding: 6px 10px;
+    }
   }
 `;
 
 // -----------------------------------------------------------------------------
 
 const Header = () => {
+  const history = useHistory();
+
+  const openHome = () => {
+    history.push('/');
+  };
+
   return (
     <$HeaderWrapper>
       <$Header>
-        <$Title>La Taverne</$Title>
+        <$Title onClick={openHome}>
+          <img src="./logo.png" />
+          <span>La Taverne</span>
+        </$Title>
         <$Links>
-          <Link to="docs">Getting started</Link>
-          <Link to="demo">Demo</Link>
+          <NavLink exact to="/">
+            Getting started
+          </NavLink>
+          <NavLink exact to="doc">
+            Documentation
+          </NavLink>
+          <NavLink exact to="demo">
+            Demo
+          </NavLink>
           <a href="https://github.com/uralys/taverne" target="__blank">
             Github
           </a>

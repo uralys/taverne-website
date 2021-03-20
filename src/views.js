@@ -28,7 +28,7 @@ const Views = () => (
   <$ViewWrapper>
     <Switch>
       <Route path="/" exact component={Home} />
-      <Route path="/docs" exact component={Doc} />
+      <Route path="/doc" exact component={Doc} />
       <Route path="/demo" exact component={Demo} />
     </Switch>
   </$ViewWrapper>
