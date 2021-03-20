@@ -4,6 +4,13 @@ import {device} from '../../style/breakpoints';
 
 // -----------------------------------------------------------------------------
 
+const $Button = styled.div`
+  font-size: 12px;
+  border-radius: 3px;
+  border: 0.5px solid #ededed;
+  padding: 4px;
+`;
+
 const $Square = styled.div`
   border-radius: 5px;
   margin: 0 2px;
@@ -16,8 +23,9 @@ const $Square = styled.div`
 
   display: flex;
   flex-direction: column;
-  align-items: left;
   justify-content: center;
+  align-items: center;
+  user-select: none;
 
   width: 100px;
   height: 100px;
@@ -30,26 +38,20 @@ const $Square = styled.div`
   p {
     margin: 0;
     padding: 0;
-    font-size: 18px;
   }
 
   ${props =>
     css`
       background-color: ${props.color};
     `}
+`;
 
-  ${props =>
-    props.selected &&
-    css`
-      border: 2px solid white;
+const $Counter = styled.p`
+  font-size: 35px;
+`;
 
-      p {
-        font-size: 20px;
-        font-weight: bold;
-      }
-    `}
-
-  transition: font-size 0.5s, border 0.2s;
+const $Note = styled.p`
+  font-size: 11px;
 `;
 
 // -----------------------------------------------------------------------------
@@ -70,8 +72,9 @@ class Square extends React.Component {
 
     return (
       <$Square color={color} onClick={onClick}>
-        <p>clicks: {clickCount}</p>
-        <p>renders: {this.nbRenders}</p>
+        <$Counter>{clickCount}</$Counter>
+        <$Button>Increment</$Button>
+        <$Note>renders: {this.nbRenders}</$Note>
       </$Square>
     );
   }
