@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PrismJS from 'prismjs';
 import marked from 'marked';
 import {device} from '../style/breakpoints';
+import 'prismjs/themes/prism-okaidia.css';
 
 const $Markup = styled.div`
   display: flex;
