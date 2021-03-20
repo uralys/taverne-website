@@ -8,7 +8,7 @@ import styled, {createGlobalStyle} from 'styled-components';
 // -----------------------------------------------------------------------------
 
 import Views from './views';
-import Navigation from './navigation';
+// import Navigation from './navigation';
 import Header from './header';
 
 // -----------------------------------------------------------------------------

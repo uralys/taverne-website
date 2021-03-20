@@ -9,14 +9,16 @@ const $Square = styled.div`
   box-sizing: border-box;
   cursor: pointer;
   user-select: none;
-  width: 100%;
-  max-width: 100px;
-  height: 60px;
+  width: 120px;
+  height: 120px;
+  color: #fff;
+  box-sizing: border-box;
+  padding: 0 10px;
 
   display: flex;
   flex-direction: column;
-  /* align-items: center;
-  justify-content: center; */
+  align-items: left;
+  justify-content: center;
 
   p {
     margin: 0;

@@ -17,8 +17,9 @@ const $Markup = styled.div`
     font-size: 18px;
   }
 
-  p code {
-    background-color: #89acb4;
+  p code,
+  li code {
+    background-color: #b2bfc2;
     padding: 5px;
     border-radius: 5px;
   }
