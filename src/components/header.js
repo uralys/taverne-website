@@ -91,7 +91,9 @@ const Header = () => {
   const history = useHistory();
 
   const openHome = () => {
-    history.push('/');
+    if (history.location.pathname !== '/') {
+      history.push('/');
+    }
   };
 
   return (
@@ -105,11 +107,11 @@ const Header = () => {
           <NavLink exact to="/">
             Getting started
           </NavLink>
-          <NavLink exact to="doc">
-            Documentation
-          </NavLink>
           <NavLink exact to="demo">
             Demo
+          </NavLink>
+          <NavLink exact to="doc">
+            Documentation
           </NavLink>
           <a href="https://github.com/uralys/taverne" target="__blank">
             Github

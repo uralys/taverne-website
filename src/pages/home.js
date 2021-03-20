@@ -2,7 +2,8 @@ import React from 'react';
 
 import Markdown from '../components/markdown';
 import sampleMd from '../resources/sample.md';
-import pitchMd from '../resources/pitch.md';
+import pitchIntroMd from '../resources/pitch-intro.md';
+import pitchDetailsMd from '../resources/pitch-details.md';
 import styled from 'styled-components';
 
 import createLaTaverne from 'taverne';
@@ -116,11 +117,12 @@ const Demo = () => {
 const Home = () => {
   return (
     <$Home>
+      <Markdown markdown={pitchIntroMd} />
       <$Sample>
         <Markdown markdown={sampleMd} />
         <Demo />
       </$Sample>
-      <Markdown markdown={pitchMd} />
+      <Markdown markdown={pitchDetailsMd} />
     </$Home>
   );
 };
