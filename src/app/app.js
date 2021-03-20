@@ -9,8 +9,11 @@ import MultiPacks from './features/multi-packs/container';
 
 // -----------------------------------------------------------------------------
 
+import Markdown from '../components/markdown';
+
+import introMd from '../resources/demo-texts/0-intro.md';
+import squareMd from '../resources/demo-texts/1-square.md';
 import instanciate from '../resources/instanciate';
-import oneSquareReaction from '../resources/one-square-reaction';
 
 // -----------------------------------------------------------------------------
 
@@ -23,39 +26,29 @@ const $App = styled.div`
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-
-  ${props =>
-    props.multiLayout &&
-    `
-    padding-top: 150px;
-    `}
 `;
 
 // -----------------------------------------------------------------------------
 
 const App = props => {
-  const {multiLayout} = props;
-  console.log(`☢️ creating App multiLayout: ${multiLayout}`);
-  const showCode = !multiLayout;
+  const {hideCode} = props;
+  console.log(`☢️ creating App | hideCode: ${hideCode}`);
 
   return (
-    <$App multiLayout={multiLayout}>
-      {!multiLayout && <h2>La Taverne demo</h2>}
+    <$App>
+      {!hideCode && <Markdown markdown={introMd} />}
 
-      {showCode && <p>{`Instanciate La Taverne`}</p>}
-      {showCode && <Prism code={instanciate} />}
-
-      <p>{`one Square`}</p>
       <SingleSquare />
-      {showCode && <Prism code={oneSquareReaction} />}
 
-      <p>{`one RGB`}</p>
+      {!hideCode && <Markdown markdown={squareMd} />}
+
+      <h2>{`one RGB`}</h2>
       <SingleRGB />
 
-      <p>{`one Pack`}</p>
+      <h2>{`one Pack`}</h2>
       <SinglePack />
 
-      <p>{`a [Pack] array`}</p>
+      <h2>{`an array of Packs`}</h2>
       <MultiPacks />
     </$App>
   );

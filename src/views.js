@@ -7,9 +7,8 @@ import styled from 'styled-components';
 // -----------------------------------------------------------------------------
 
 import Demo from './pages/demo';
-import DemoMultiScope from './pages/demo-multi-scope';
 import Doc from './pages/docs';
-import {device} from './style/breakpoints';
+import Home from './pages/home';
 
 // -----------------------------------------------------------------------------
 
@@ -20,11 +19,7 @@ const $ViewWrapper = styled.div`
   min-width: 0;
   position: relative;
   margin: 0 24px;
-  padding: 0;
-
-  @media ${device.tablet} {
-    padding: 40px 0;
-  }
+  padding: 70px 0;
 `;
 
 // -----------------------------------------------------------------------------
@@ -32,10 +27,9 @@ const $ViewWrapper = styled.div`
 const Views = () => (
   <$ViewWrapper>
     <Switch>
-      <Route path="/" exact component={Doc} />
+      <Route path="/" exact component={Home} />
       <Route path="/docs" exact component={Doc} />
       <Route path="/demo" component={Demo} />
-      <Route path="/multi" component={DemoMultiScope} />
     </Switch>
   </$ViewWrapper>
 );

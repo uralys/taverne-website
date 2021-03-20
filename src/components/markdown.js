@@ -7,13 +7,20 @@ import {device} from '../style/breakpoints';
 const $Markup = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   font-size: 14px;
   padding: 30px;
   box-sizing: border-box;
   width: 100%;
 
   @media ${device.tablet} {
-    font-size: 16px;
+    font-size: 18px;
+  }
+
+  p code {
+    background-color: #89acb4;
+    padding: 5px;
+    border-radius: 5px;
   }
 `;
 

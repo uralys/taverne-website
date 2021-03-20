@@ -8,8 +8,9 @@ const $Pack = styled.div`
   flex-direction: row;
   flex-flow: wrap;
   justify-content: center;
-  border: 2px dashed;
+  border: 1.5px dashed;
   margin: 5px;
+  border-radius: 15px;
 `;
 
 // -----------------------------------------------------------------------------

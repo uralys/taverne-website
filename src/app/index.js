@@ -13,8 +13,8 @@ import App from './app';
 
 // -----------------------------------------------------------------------------
 
-const _App = props => {
-  const {multiLayout = false} = props;
+const DemoApp = props => {
+  const {hideCode = false} = props;
 
   const {dispatch, store} = createLaTaverne(
     {
@@ -28,9 +28,9 @@ const _App = props => {
 
   return (
     <Taverne dispatch={dispatch} store={store}>
-      <App multiLayout={multiLayout} />
+      <App hideCode={hideCode} />
     </Taverne>
   );
 };
 
-export default _App;
+export default DemoApp;

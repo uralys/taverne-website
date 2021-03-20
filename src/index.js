@@ -18,6 +18,8 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     background-color: #ededed;
+    font-size: 17px;
+    font-family: Poppins;
   }
 `;
 
@@ -39,7 +41,7 @@ const createSite = ({id}) => {
       <GlobalStyle />
       <Header />
       <$MainWrapper>
-        <Navigation />
+        {/* <Navigation /> */}
         <Views />
       </$MainWrapper>
     </Router>,

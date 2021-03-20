@@ -1,7 +1,6 @@
 // -----------------------------------------------------------------------------
 
 import React from 'react';
-import {useHistory} from 'react-router';
 import styled from 'styled-components';
 
 import {device} from './style/breakpoints';
@@ -23,25 +22,10 @@ const $Navigation = styled.div`
 // -----------------------------------------------------------------------------
 
 const Navigation = () => {
-  const history = useHistory();
-
-  const openDocs = () => {
-    history.push('/docs');
-  };
-
-  const openDemo = () => {
-    history.push('/demo');
-  };
-
-  const openMulti = () => {
-    history.push('/multi');
-  };
-
   return (
     <$Navigation>
-      <p onClick={openDocs}>docs</p>
-      <p onClick={openDemo}>demo</p>
-      <p onClick={openMulti}>multi</p>
+      {/* <p onClick={openDocs}>docs</p> */}
+      {/* <p onClick={openDemo}>demo</p> */}
     </$Navigation>
   );
 };

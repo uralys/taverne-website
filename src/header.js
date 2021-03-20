@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------------
 
 import React from 'react';
-import {useHistory} from 'react-router';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 // -----------------------------------------------------------------------------
@@ -21,7 +21,7 @@ const $HeaderWrapper = styled.div`
 `;
 
 const $Header = styled.header`
-  max-width: 1200px;
+  max-width: 1100px;
   flex-grow: 1;
   display: flex;
   justify-content: space-between;
@@ -40,10 +40,12 @@ const $Title = styled.p`
 const $Links = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
 
-  p {
-    padding: 0 20px;
-    cursor: pointer;
+  a {
+    color: rgb(231, 230, 228);
+    text-decoration: none;
+    padding: 0 10px;
 
     &:hover {
       color: #fff;
@@ -54,28 +56,16 @@ const $Links = styled.div`
 // -----------------------------------------------------------------------------
 
 const Header = () => {
-  const history = useHistory();
-
-  const openDocs = () => {
-    history.push('/docs');
-  };
-
-  const openDemo = () => {
-    history.push('/demo');
-  };
-
-  const openMulti = () => {
-    history.push('/multi');
-  };
-
   return (
     <$HeaderWrapper>
       <$Header>
         <$Title>La Taverne</$Title>
         <$Links>
-          <p onClick={openDocs}>docs</p>
-          <p onClick={openDemo}>demo</p>
-          <p onClick={openMulti}>multi</p>
+          <Link to="docs">Docs</Link>
+          <Link to="demo">Demo</Link>
+          <a href="https://github.com/uralys/taverne" target="__blank">
+            Github
+          </a>
         </$Links>
       </$Header>
     </$HeaderWrapper>
