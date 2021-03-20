@@ -3,6 +3,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import {device} from '../style/breakpoints';
+import {primary} from '../style/colors';
 
 // -----------------------------------------------------------------------------
 
@@ -16,8 +18,8 @@ const $HeaderWrapper = styled.div`
   justify-content: center;
   padding: 0 20px;
   box-sizing: border-box;
-  background-color: #571d91;
-  color: rgb(231, 230, 228);
+  background-color: #ededed;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
 `;
 
 const $Header = styled.header`
@@ -32,23 +34,34 @@ const $Header = styled.header`
 `;
 
 const $Title = styled.p`
-  font-size: 30px;
+  color: ${primary};
+  font-size: 19px;
   margin: 0;
   padding: 0;
+
+  @media ${device.tablet} {
+    font-size: 30px;
+  }
 `;
 
 const $Links = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  font-size: 15px;
+
+  @media ${device.tablet} {
+    font-size: 17px;
+  }
 
   a {
-    color: rgb(231, 230, 228);
+    color: ${primary};
+    font-weight: 500;
     text-decoration: none;
     padding: 0 10px;
 
     &:hover {
-      color: #fff;
+      color: #444;
     }
   }
 `;
@@ -61,7 +74,7 @@ const Header = () => {
       <$Header>
         <$Title>La Taverne</$Title>
         <$Links>
-          <Link to="docs">Docs</Link>
+          <Link to="docs">Getting started</Link>
           <Link to="demo">Demo</Link>
           <a href="https://github.com/uralys/taverne" target="__blank">
             Github

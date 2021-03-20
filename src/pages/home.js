@@ -1,13 +1,16 @@
 import React from 'react';
 
-import explanations from '../resources/explanations.md';
 import Markdown from '../components/markdown';
+import Hero from '../components/hero';
+import sampleMd from '../resources/sample.md';
+import pitchMd from '../resources/pitch.md';
 
 const Home = () => {
   return (
     <>
-      <p>hero</p>
-      <Markdown markdown={explanations} />;
+      <Hero />
+      <Markdown markdown={sampleMd} />
+      <Markdown markdown={pitchMd} />
     </>
   );
 };

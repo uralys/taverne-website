@@ -9,7 +9,9 @@ import styled, {createGlobalStyle} from 'styled-components';
 
 import Views from './views';
 // import Navigation from './navigation';
-import Header from './header';
+import Header from './components/header';
+import {primary} from './style/colors';
+import ScrollToTop from './components/scroll-to-top';
 
 // -----------------------------------------------------------------------------
 
@@ -20,6 +22,16 @@ const GlobalStyle = createGlobalStyle`
     background-color: #ededed;
     font-size: 17px;
     font-family: Poppins;
+  }
+
+  a {
+    color: ${primary};
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      color: #444;
+    }
   }
 `;
 
@@ -39,6 +51,7 @@ const createSite = ({id}) => {
   render(
     <Router>
       <GlobalStyle />
+      <ScrollToTop />
       <Header />
       <$MainWrapper>
         {/* <Navigation /> */}
