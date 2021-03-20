@@ -1,17 +1,15 @@
 `La Taverne` is an elementary [Flux](https://facebook.github.io/flux/docs/in-depth-overview) implementation to manage your state.
 
-### Influences
+The original idea is to keep `Redux` original power and simplicity, removing the headaches of the mandatory addons you surely had to deal with too like [Redux-thunks](https://github.com/reduxjs/redux-thunk) or [Reselect](https://github.com/reduxjs/reselect).
 
-I needed a fresher Redux tool, without the headaches of [thunks](https://github.com/reduxjs/redux-thunk), [Reselect](https://github.com/reduxjs/reselect)
-
-yet, `La Taverne` keeps `Redux` original power and simplicity:
+Let's keep the 🚀
 
 - 1 external, predictable and centralized state.
 - actions + reducers
 - middlewares
 - easily debuggable with [devtools](https://github.com/reduxjs/redux-devtools)
 
-It also uses the [Immer](https://immerjs.github.io/immer/produce) magic to assure immutability in your reducing.
+Now let's add the [Immer](https://immerjs.github.io/immer/produce) magic to assure immutability in your reducing.
 
 ### React
 

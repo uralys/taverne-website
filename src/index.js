@@ -40,7 +40,6 @@ const $MainWrapper = styled.div`
   flex-flow: row nowrap;
   width: 100%;
   margin: 0 auto;
-  max-width: 1100px;
 `;
 
 // -----------------------------------------------------------------------------

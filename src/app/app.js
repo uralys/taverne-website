@@ -23,6 +23,7 @@ const $App = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  max-width: 1000px;
   min-height: 100vh;
   position: relative;
   overflow: hidden;

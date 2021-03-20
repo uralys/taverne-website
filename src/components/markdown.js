@@ -7,10 +7,11 @@ import {device} from '../style/breakpoints';
 const $Markup = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   font-size: 14px;
   padding: 30px;
   box-sizing: border-box;
+  max-width: 1100px;
   width: 100%;
 
   @media ${device.tablet} {
