@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
+import {device} from '../../style/breakpoints';
 
 // -----------------------------------------------------------------------------
 
@@ -9,8 +10,6 @@ const $Square = styled.div`
   box-sizing: border-box;
   cursor: pointer;
   user-select: none;
-  width: 120px;
-  height: 120px;
   color: #fff;
   box-sizing: border-box;
   padding: 0 10px;
@@ -19,6 +18,14 @@ const $Square = styled.div`
   flex-direction: column;
   align-items: left;
   justify-content: center;
+
+  width: 100px;
+  height: 100px;
+
+  @media ${device.tablet} {
+    width: 120px;
+    height: 120px;
+  }
 
   p {
     margin: 0;

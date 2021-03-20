@@ -1,3 +1,5 @@
+# Introduction
+
 ## 📦 installation
 
 ```sh
@@ -80,8 +82,6 @@ const doSomethingInThisStore = {
   Then `reduce` will be called with the result once it's done.
 
 ## 🎨 React integration
-
-<a href="https://reactjs.org/docs/hooks-custom.html"><img src="https://img.shields.io/badge/react-hooks-5908d2.svg" alt="hooks" /></a>
 
 `La Taverne` has a context Provider `<Taverne>` which provides 2 utilities:
 

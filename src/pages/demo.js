@@ -10,6 +10,7 @@ const $Demo = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 `;
 
 const $BothApps = styled.div`

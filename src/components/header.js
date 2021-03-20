@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------------
 
 import React from 'react';
-import {Link, NavLink, useHistory} from 'react-router-dom';
+import {NavLink, useHistory} from 'react-router-dom';
 import styled from 'styled-components';
 import {device} from '../style/breakpoints';
 import {primary} from '../style/colors';
@@ -31,6 +31,10 @@ const $Header = styled.header`
   position: relative;
   text-align: left;
   align-items: center;
+
+  @media ${device.tablet} {
+    font-size: 30px;
+  }
 `;
 
 const $Title = styled.div`

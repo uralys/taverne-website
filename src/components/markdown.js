@@ -23,6 +23,10 @@ const $Markup = styled.div`
     padding: 5px;
     border-radius: 5px;
   }
+
+  pre {
+    max-width: 100%;
+  }
 `;
 
 const Markdown = ({markdown}) => {
