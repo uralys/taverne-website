@@ -18,7 +18,7 @@ const $View = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px 0;
+  padding: 80px 30px;
   width: 100%;
 `;
 

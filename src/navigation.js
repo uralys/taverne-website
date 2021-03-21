@@ -2,8 +2,10 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import Markdown from './components/markdown';
 
 import {device} from './style/breakpoints';
+import toc from './resources/toc.md';
 
 // -----------------------------------------------------------------------------
 
@@ -14,7 +16,7 @@ const $Navigation = styled.div`
   overflow-y: auto;
   top: 50px;
 
-  @media ${device.tablet} {
+  @media ${device.laptopL} {
     flex: 0 0 240px;
   }
 `;
@@ -24,8 +26,7 @@ const $Navigation = styled.div`
 const Navigation = () => {
   return (
     <$Navigation>
-      {/* <p onClick={openDocs}>docs</p> */}
-      {/* <p onClick={openDemo}>demo</p> */}
+      <Markdown markdown={toc} />
     </$Navigation>
   );
 };

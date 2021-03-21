@@ -4,6 +4,7 @@ public/*.css
 public/*.js
 public/*.map
 public/meta.json
+src/resources/toc.md
 
 # deps
 node_modules

@@ -23,7 +23,7 @@ const $HeaderWrapper = styled.div`
 `;
 
 const $Header = styled.header`
-  max-width: 1100px;
+  max-width: 1300px;
   flex-grow: 1;
   display: flex;
   justify-content: space-between;

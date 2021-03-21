@@ -10,10 +10,10 @@ import MultiPacks from './features/multi-packs/container';
 
 import Markdown from '../components/markdown';
 
-import introMd from '../resources/demo-texts/0-intro.md';
-import squareDetailsAndRGBMd from '../resources/demo-texts/1-details-and-rgb.md';
-import packMd from '../resources/demo-texts/2-pack.md';
-import packsMd from '../resources/demo-texts/3-array-of-packs.md';
+import introMd from '../resources/demo-rgb/0-intro.md';
+import squareDetailsAndRGBMd from '../resources/demo-rgb/1-details-and-rgb.md';
+import packMd from '../resources/demo-rgb/2-pack.md';
+import packsMd from '../resources/demo-rgb/3-array-of-packs.md';
 
 // -----------------------------------------------------------------------------
 

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import explanations from '../../resources/explanations.md';
+import gettingStarted from '../../resources/getting-started.md';
 import Markdown from '../../components/markdown';
 
 const Doc = () => {
-  return <Markdown markdown={explanations} />;
+  return <Markdown markdown={gettingStarted} />;
 };
 
 export default Doc;

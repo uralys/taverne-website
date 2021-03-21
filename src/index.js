@@ -5,8 +5,8 @@ import styled, {createGlobalStyle} from 'styled-components';
 
 // -----------------------------------------------------------------------------
 
+import Navigation from './navigation';
 import Views from './views';
-// import Navigation from './navigation';
 import Header from './components/header';
 import {primary} from './style/colors';
 import ScrollToTop from './components/scroll-to-top';
@@ -37,6 +37,7 @@ const $MainWrapper = styled.div`
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
+  max-width: 1300px;
   margin: 0 auto;
 `;
 

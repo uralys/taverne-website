@@ -146,3 +146,19 @@ import books from './features/books/reducer';
 
 const {dispatch, store} = createLaTaverne({books}, [devtools]);
 ```
+
+## level 2.a
+
+### level 2.1
+
+#### level 2.1.1
+
+#### level 2.1.2
+
+#### level 2.1.3
+
+### level 2.2
+
+### level 2.3
+
+## level 2.b

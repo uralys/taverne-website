@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import App from '../app';
 import Markdown from '../components/markdown';
-import scopesMd from '../resources/demo-texts/4-scopes.md';
+import scopesMd from '../resources/demo-rgb/4-scopes.md';
 import {device} from '../style/breakpoints';
 
 const $BothApps = styled.div`

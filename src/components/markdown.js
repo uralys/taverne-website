@@ -10,9 +10,8 @@ const $Markup = styled.div`
   flex-direction: column;
   align-items: left;
   font-size: 14px;
-  padding: 30px;
   box-sizing: border-box;
-  max-width: 1100px;
+  max-width: 900px;
   width: 100%;
 
   @media ${device.tablet} {

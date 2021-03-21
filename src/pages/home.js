@@ -1,9 +1,9 @@
 import React from 'react';
 
 import Markdown from '../components/markdown';
-import sampleMd from '../resources/sample.md';
-import pitchIntroMd from '../resources/pitch-intro.md';
-import pitchDetailsMd from '../resources/pitch-details.md';
+import sampleMd from '../resources/home/sample.md';
+import pitchIntroMd from '../resources/home/pitch-intro.md';
+import pitchDetailsMd from '../resources/home/pitch-details.md';
 import styled from 'styled-components';
 
 import createLaTaverne from 'taverne';
@@ -51,6 +51,7 @@ const $Button = styled.div`
 const $Square = styled.div`
   width: 200px;
   height: 200px;
+  margin-left: 40px;
   background-color: ${primary};
   color: #ededed;
   border-radius: 10px;
