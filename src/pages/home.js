@@ -20,7 +20,7 @@ const $Home = styled.div`
   width: 100%;
 
   pre {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   @media ${device.tablet} {
