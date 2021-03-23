@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Markdown from './components/markdown';
 
 import {device} from './style/breakpoints';
-import toc from './resources/toc.md';
+// import toc from './resources/toc.md';
 
 // -----------------------------------------------------------------------------
 
@@ -24,11 +24,7 @@ const $Navigation = styled.div`
 // -----------------------------------------------------------------------------
 
 const Navigation = () => {
-  return (
-    <$Navigation>
-      <Markdown markdown={toc} />
-    </$Navigation>
-  );
+  return <$Navigation>{/* <Markdown markdown={toc} /> */}</$Navigation>;
 };
 
 // -----------------------------------------------------------------------------
