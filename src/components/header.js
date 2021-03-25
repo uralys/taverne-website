@@ -3,6 +3,7 @@
 import React from 'react';
 import {NavLink, useHistory} from 'react-router-dom';
 import styled from 'styled-components';
+import {DOC_PATHS} from '../pages/docs';
 import {device} from '../style/breakpoints';
 import {primary} from '../style/colors';
 
@@ -112,7 +113,7 @@ const Header = () => {
           <NavLink exact to={PATHS.demo}>
             Demo
           </NavLink>
-          <NavLink exact to={PATHS.gettingStarted}>
+          <NavLink exact to={DOC_PATHS.gettingStarted}>
             Documentation
           </NavLink>
           <a href="https://github.com/uralys/taverne" target="__blank">

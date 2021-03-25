@@ -8,8 +8,7 @@ import styled from 'styled-components';
 
 import Intro from './pages/intro';
 import Demo from './pages/demo-rgb';
-import GettingStarted from './pages/docs/getting-started';
-import ReactIntegration from './pages/docs/react';
+import Documentation from './pages/docs';
 import {device} from './style/breakpoints';
 
 // -----------------------------------------------------------------------------
@@ -32,8 +31,7 @@ const $View = styled.div`
 // -----------------------------------------------------------------------------
 
 const intro = '/';
-const gettingStarted = '/getting-started';
-const reactIntegration = '/react';
+const documentation = '/documentation';
 const demo = '/demo';
 
 // -----------------------------------------------------------------------------
@@ -42,8 +40,7 @@ const Views = () => (
   <$View>
     <Switch>
       <Route path={intro} exact component={Intro} />
-      <Route path={gettingStarted} exact component={GettingStarted} />
-      <Route path={reactIntegration} exact component={ReactIntegration} />
+      <Route path={documentation} component={Documentation} />
       <Route path={demo} exact component={Demo} />
     </Switch>
   </$View>
@@ -55,7 +52,6 @@ export default Views;
 
 export const PATHS = {
   intro,
-  gettingStarted,
-  reactIntegration,
+  documentation,
   demo
 };

@@ -7,7 +7,7 @@ import styled from 'styled-components';
 // -----------------------------------------------------------------------------
 
 import {device} from './style/breakpoints';
-import {PATHS} from './views';
+import {DOC_PATHS} from './pages/docs';
 
 // -----------------------------------------------------------------------------
 
@@ -37,12 +37,12 @@ const $Navigation = styled.div`
 const topics = [
   {
     name: 'Getting started',
-    path: PATHS.gettingStarted,
+    path: DOC_PATHS.gettingStarted,
     toc: gettingStartedTOC
   },
   {
     name: 'React hooks',
-    path: PATHS.reactIntegration,
+    path: DOC_PATHS.reactIntegration,
     toc: reactTOC
   }
 ];
@@ -53,12 +53,12 @@ const Navigation = () => {
   return (
     <$Navigation>
       {topics.map(({name, path, toc}) => (
-        <>
+        <div key={path}>
           <NavLink exact to={path}>
             {name}
           </NavLink>
           <Markdown markdown={toc} />
-        </>
+        </div>
       ))}
     </$Navigation>
   );

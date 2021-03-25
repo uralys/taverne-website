@@ -52,7 +52,6 @@ const createSite = ({id}) => {
       <ScrollToTop />
       <Header />
       <$MainWrapper>
-        <Navigation />
         <Views />
       </$MainWrapper>
     </Router>,
