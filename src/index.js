@@ -5,7 +5,6 @@ import styled, {createGlobalStyle} from 'styled-components';
 
 // -----------------------------------------------------------------------------
 
-import Navigation from './navigation';
 import Views from './views';
 import Header from './components/header';
 import {primary} from './style/colors';
@@ -33,6 +32,12 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const $Site = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
 const $MainWrapper = styled.div`
   display: flex;
   flex-flow: row nowrap;
@@ -50,10 +55,12 @@ const createSite = ({id}) => {
     <Router>
       <GlobalStyle />
       <ScrollToTop />
-      <Header />
-      <$MainWrapper>
-        <Views />
-      </$MainWrapper>
+      <$Site>
+        <Header />
+        <$MainWrapper>
+          <Views />
+        </$MainWrapper>
+      </$Site>
     </Router>,
     container
   );

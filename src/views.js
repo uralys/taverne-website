@@ -14,17 +14,16 @@ import {device} from './style/breakpoints';
 // -----------------------------------------------------------------------------
 
 const $View = styled.div`
-  width: 100%;
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 50px 5px;
+  width: 100%;
+  flex-grow: 1;
   box-sizing: border-box;
+  padding: 0px 5px;
 
   @media ${device.tablet} {
-    padding: 80px 30px;
+    padding: 0px 30px;
   }
 `;
 

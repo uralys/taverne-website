@@ -17,8 +17,6 @@ const resources = {
   packsMd
 };
 
-console.log({resources});
-
 const $BothApps = styled.div`
   display: flex;
   flex-direction: column;

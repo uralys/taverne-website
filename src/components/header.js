@@ -11,8 +11,8 @@ import {PATHS} from '../views';
 
 // -----------------------------------------------------------------------------
 
-const $HeaderWrapper = styled.div`
-  position: fixed;
+const $HeaderWrapper = styled.nav`
+  position: sticky;
   top: 0;
   z-index: 9999;
   width: 100%;
@@ -25,7 +25,7 @@ const $HeaderWrapper = styled.div`
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
 `;
 
-const $Header = styled.header`
+const $Header = styled.div`
   max-width: 1300px;
   flex-grow: 1;
   display: flex;
@@ -103,7 +103,7 @@ const Header = () => {
     <$HeaderWrapper>
       <$Header>
         <$Title onClick={openIntro}>
-          <img src="./logo.png" />
+          <img src="/logo.png" />
           <span>La Taverne</span>
         </$Title>
         <$Links>

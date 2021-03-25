@@ -13,12 +13,7 @@ import pitchDetailsMd from './pitch-details.md';
 
 // -----------------------------------------------------------------------------
 
-const $Home = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-
+const $Intro = styled.div`
   pre {
     font-size: 13px;
   }
@@ -115,17 +110,15 @@ const Demo = () => {
 
 // -----------------------------------------------------------------------------
 
-const Home = () => {
-  return (
-    <$Home>
-      <Markdown markdown={pitchIntroMd} />
-      <$Sample>
-        <Markdown markdown={sampleMd} />
-        <Demo />
-      </$Sample>
-      <Markdown markdown={pitchDetailsMd} />
-    </$Home>
-  );
-};
+const Intro = () => (
+  <$Intro>
+    <Markdown markdown={pitchIntroMd} />
+    <$Sample>
+      <Markdown markdown={sampleMd} />
+      <Demo />
+    </$Sample>
+    <Markdown markdown={pitchDetailsMd} />
+  </$Intro>
+);
 
-export default Home;
+export default Intro;

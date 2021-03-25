@@ -3,9 +3,8 @@
 import React from 'react';
 import {Route, Switch} from 'react-router';
 import styled from 'styled-components';
-import Navigation from '../../navigation';
-import {device} from '../../style/breakpoints';
 
+import Navigation from './navigation';
 import GettingStarted from './getting-started';
 import ReactIntegration from './react';
 
@@ -21,15 +20,9 @@ const $View = styled.div`
   width: 100%;
   flex-grow: 1;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 50px 5px;
+  flex-direction: row;
+  justify-content: space-between;
   box-sizing: border-box;
-
-  @media ${device.tablet} {
-    padding: 80px 30px;
-  }
 `;
 
 // -----------------------------------------------------------------------------

@@ -28,6 +28,11 @@ const $Markup = styled.div`
   pre {
     max-width: 100%;
   }
+
+  h2 {
+    padding-top: 70px;
+    margin-top: -20px;
+  }
 `;
 
 const Markdown = ({markdown}) => {

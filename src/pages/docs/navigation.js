@@ -6,14 +6,14 @@ import styled from 'styled-components';
 
 // -----------------------------------------------------------------------------
 
-import {device} from './style/breakpoints';
-import {DOC_PATHS} from './pages/docs';
+import {device} from '../../style/breakpoints';
+import Markdown from '../../components/markdown';
 
 // -----------------------------------------------------------------------------
 
-import gettingStartedTOC from '../tocs/getting-started.toc.md';
-import reactTOC from '../tocs/react.toc.md';
-import Markdown from './components/markdown';
+import {DOC_PATHS} from '.';
+import gettingStartedTOC from '../../../tocs/getting-started.toc.md';
+import reactTOC from '../../../tocs/react.toc.md';
 
 // -----------------------------------------------------------------------------
 
@@ -23,6 +23,7 @@ const $Navigation = styled.div`
   position: sticky;
   overflow-y: auto;
   top: 50px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 1px 0px;
 
   display: flex;
   flex-direction: column;
@@ -34,22 +35,20 @@ const $Navigation = styled.div`
 
 // -----------------------------------------------------------------------------
 
-const topics = [
-  {
-    name: 'Getting started',
-    path: DOC_PATHS.gettingStarted,
-    toc: gettingStartedTOC
-  },
-  {
-    name: 'React hooks',
-    path: DOC_PATHS.reactIntegration,
-    toc: reactTOC
-  }
-];
-
-// -----------------------------------------------------------------------------
-
 const Navigation = () => {
+  const topics = [
+    {
+      name: 'Getting started',
+      path: DOC_PATHS.gettingStarted,
+      toc: gettingStartedTOC
+    },
+    {
+      name: 'React hooks',
+      path: DOC_PATHS.reactIntegration,
+      toc: reactTOC
+    }
+  ];
+
   return (
     <$Navigation>
       {topics.map(({name, path, toc}) => (
