@@ -9,7 +9,8 @@
     "start:dev": "node scripts/dev-server.js",
     "ncu": "npm-check-updates",
     "lint": "eslint src",
-    "test": "ava"
+    "test": "ava",
+    "release": "npm run build && surge public/ --domain taverne.surge.sh"
   },
   "license": "MIT",
   "dependencies": {
