@@ -7,6 +7,11 @@ const {transform} = require('doctoc');
 
 // -----------------------------------------------------------------------------
 
+const TOC_HEADER =
+  '**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*\n\n';
+
+// -----------------------------------------------------------------------------
+
 const DOCS_ROOT = `../src/pages/docs`;
 const TOCS = `../tocs`;
 
@@ -30,18 +35,21 @@ const generate = () => {
 // -----------------------------------------------------------------------------
 
 const generateTOC = folder => {
+  const mdPath = path.resolve(__dirname, `${DOCS_ROOT}/${folder}/${folder}.md`);
+
+  let md;
+  try {
+    md = fs.readFileSync(mdPath, 'utf8');
+  } catch (e) {
+    return;
+  }
+
   const outputName = `${folder}.toc.md`;
   console.log(chalk.bold.green(`> tocs/${outputName}`));
 
-  const mdPath = path.resolve(__dirname, `${DOCS_ROOT}/${folder}/${folder}.md`);
-  const md = fs.readFileSync(mdPath, 'utf8');
-
   const extraction = transform(md);
 
-  const title =
-    '**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*\n\n';
-
-  let toc = extraction.toc.split(title)[1];
+  let toc = extraction.toc.split(TOC_HEADER)[1];
   const topNav = toc.split('\n')[0];
 
   toc = toc.split(`${topNav}\n`)[1];

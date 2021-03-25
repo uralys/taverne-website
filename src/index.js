@@ -9,6 +9,7 @@ import Views from './views';
 import Header from './components/header';
 import {primary} from './style/colors';
 import ScrollToTop from './components/scroll-to-top';
+import ReloadAnchor from './components/reload-anchor';
 
 // -----------------------------------------------------------------------------
 
@@ -55,6 +56,7 @@ const createSite = ({id}) => {
     <Router>
       <GlobalStyle />
       <ScrollToTop />
+      <ReloadAnchor />
       <$Site>
         <Header />
         <$MainWrapper>

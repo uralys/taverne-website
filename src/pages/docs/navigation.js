@@ -33,6 +33,11 @@ const $Navigation = styled.div`
   }
 `;
 
+const $TOC = styled.div`
+  height: 0;
+  overflow: hidden;
+`;
+
 // -----------------------------------------------------------------------------
 
 const Navigation = () => {
@@ -56,7 +61,9 @@ const Navigation = () => {
           <NavLink exact to={path}>
             {name}
           </NavLink>
-          <Markdown markdown={toc} />
+          <$TOC>
+            <Markdown markdown={toc} />
+          </$TOC>
         </div>
       ))}
     </$Navigation>

@@ -22,7 +22,7 @@ Illustration will be marked with 🔍
 
 </details>
 
-## create a reducer
+## [create a reducer](#create-a-reducer)
 
 You'll have to define a reducer with
 
