@@ -1,6 +1,6 @@
-# Introduction
+# Getting started
 
-## Getting started
+## Install
 
 ```sh
 > npm i --save taverne
