@@ -33,6 +33,11 @@ const $Markup = styled.div`
     padding-top: 70px;
     margin-top: -20px;
   }
+
+  h3 {
+    padding-top: 70px;
+    margin-top: -50px;
+  }
 `;
 
 const Markdown = ({markdown}) => {

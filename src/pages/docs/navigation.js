@@ -1,8 +1,8 @@
 // -----------------------------------------------------------------------------
 
 import React from 'react';
-import {NavLink} from 'react-router-dom';
-import styled from 'styled-components';
+import {NavLink, useLocation} from 'react-router-dom';
+import styled, {css} from 'styled-components';
 
 // -----------------------------------------------------------------------------
 
@@ -36,11 +36,19 @@ const $Navigation = styled.div`
 const $TOC = styled.div`
   height: 0;
   overflow: hidden;
+
+  ${props =>
+    props.show &&
+    css`
+      height: auto;
+    `}
 `;
 
 // -----------------------------------------------------------------------------
 
-const Navigation = () => {
+const Navigation = props => {
+  const {pathname} = useLocation();
+
   const topics = [
     {
       name: 'Getting started',
@@ -61,7 +69,7 @@ const Navigation = () => {
           <NavLink exact to={path}>
             {name}
           </NavLink>
-          <$TOC>
+          <$TOC show={pathname === path}>
             <Markdown markdown={toc} />
           </$TOC>
         </div>
