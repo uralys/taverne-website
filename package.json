@@ -1,6 +1,6 @@
 {
   "name": "@uralys/taverne-demo",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "⛵ demonstrating how to use La Taverne",
   "scripts": {
     "prebuild": "rm -rf ./dist && node scripts/generate-toc.js",
