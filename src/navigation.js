@@ -1,11 +1,19 @@
 // -----------------------------------------------------------------------------
 
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
-import Markdown from './components/markdown';
 
+// -----------------------------------------------------------------------------
+
+import TOC from './components/toc';
 import {device} from './style/breakpoints';
-// import toc from './resources/toc.md';
+import {PATHS} from './views';
+
+// -----------------------------------------------------------------------------
+
+import gettingStartedMd from './pages/docs/getting-started/getting-started.md';
+import reactMd from './pages/docs/react/react.md';
 
 // -----------------------------------------------------------------------------
 
@@ -16,7 +24,10 @@ const $Navigation = styled.div`
   overflow-y: auto;
   top: 50px;
 
-  @media ${device.laptopL} {
+  display: flex;
+  flex-direction: column;
+
+  @media ${device.laptop} {
     flex: 0 0 240px;
   }
 `;
@@ -24,7 +35,18 @@ const $Navigation = styled.div`
 // -----------------------------------------------------------------------------
 
 const Navigation = () => {
-  return <$Navigation>{/* <Markdown markdown={toc} /> */}</$Navigation>;
+  return (
+    <$Navigation>
+      <NavLink exact to={PATHS.gettingStarted}>
+        Getting started
+      </NavLink>
+      <TOC markdown={gettingStartedMd} />
+      <NavLink exact to={PATHS.reactIntegration}>
+        React hooks
+      </NavLink>
+      <TOC markdown={reactMd} />
+    </$Navigation>
+  );
 };
 
 // -----------------------------------------------------------------------------
