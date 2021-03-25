@@ -10,11 +10,6 @@ import MultiPacks from './features/multi-packs/container';
 
 import Markdown from '../components/markdown';
 
-import introMd from '../resources/demo-rgb/0-intro.md';
-import squareDetailsAndRGBMd from '../resources/demo-rgb/1-details-and-rgb.md';
-import packMd from '../resources/demo-rgb/2-pack.md';
-import packsMd from '../resources/demo-rgb/3-array-of-packs.md';
-
 // -----------------------------------------------------------------------------
 
 const $App = styled.div`
@@ -32,17 +27,17 @@ const $App = styled.div`
 // -----------------------------------------------------------------------------
 
 const App = props => {
-  const {hideCode} = props;
+  const {resources} = props;
 
   return (
     <$App>
-      {!hideCode && <Markdown markdown={introMd} />}
+      {resources && <Markdown markdown={resources.introMd} />}
       <SingleSquare />
-      {!hideCode && <Markdown markdown={squareDetailsAndRGBMd} />}
+      {resources && <Markdown markdown={resources.squareDetailsAndRGBMd} />}
       <SingleRGB />
-      {!hideCode && <Markdown markdown={packMd} />}
+      {resources && <Markdown markdown={resources.packMd} />}
       <SinglePack />
-      {!hideCode && <Markdown markdown={packsMd} />}
+      {resources && <Markdown markdown={resources.packsMd} />}
       <MultiPacks />
     </$App>
   );

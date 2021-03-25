@@ -13,9 +13,7 @@ import App from './app';
 
 // -----------------------------------------------------------------------------
 
-const DemoApp = props => {
-  const {hideCode = false} = props;
-
+const Demo = ({resources}) => {
   const {dispatch, store} = createLaTaverne(
     {
       singlePack,
@@ -28,9 +26,9 @@ const DemoApp = props => {
 
   return (
     <Taverne dispatch={dispatch} store={store}>
-      <App hideCode={hideCode} />
+      <App resources={resources} />
     </Taverne>
   );
 };
 
-export default DemoApp;
+export default Demo;

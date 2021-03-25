@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import {device} from '../style/breakpoints';
 import {primary} from '../style/colors';
 
+import {PATHS} from '../views';
+
 // -----------------------------------------------------------------------------
 
 const $HeaderWrapper = styled.div`
@@ -90,27 +92,27 @@ const $Links = styled.div`
 const Header = () => {
   const history = useHistory();
 
-  const openHome = () => {
-    if (history.location.pathname !== '/') {
-      history.push('/');
+  const openIntro = () => {
+    if (history.location.pathname !== PATHS.intro) {
+      history.push(PATHS.intro);
     }
   };
 
   return (
     <$HeaderWrapper>
       <$Header>
-        <$Title onClick={openHome}>
+        <$Title onClick={openIntro}>
           <img src="./logo.png" />
           <span>La Taverne</span>
         </$Title>
         <$Links>
-          <NavLink exact to="/">
-            Getting started
+          <NavLink exact to={PATHS.intro}>
+            Intro
           </NavLink>
-          <NavLink exact to="demo">
+          <NavLink exact to={PATHS.demo}>
             Demo
           </NavLink>
-          <NavLink exact to="doc">
+          <NavLink exact to={PATHS.gettingStarted}>
             Documentation
           </NavLink>
           <a href="https://github.com/uralys/taverne" target="__blank">

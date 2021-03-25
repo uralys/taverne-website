@@ -1,12 +1,12 @@
 # Introduction
 
-## 📦 installation
+## Getting started
 
 ```sh
 > npm i --save taverne
 ```
 
-## 🐿️ Instanciate your store
+## Instanciate your store
 
 Once your reducers are ready, you can instanciate your `store` and `dispatch`:
 
@@ -23,7 +23,7 @@ const {dispatch, store} = createLaTaverne({
 });
 ```
 
-## 🧬 Create a reducer
+## Create a reducer
 
 A "Reducer" is an `initialState` and a list of `reactions`.
 
@@ -46,7 +46,7 @@ export default {
 export {ADD_BOOK};
 ```
 
-## 🧚 Reactions
+## Reactions
 
 - A `reaction` will be triggered when an action is dispatched with `action.type` === `on`.
 
@@ -81,7 +81,7 @@ const doSomethingInThisStore = {
 
   Then `reduce` will be called with the result once it's done.
 
-## 🎨 React integration
+## React integration
 
 `La Taverne` has a context Provider `<Taverne>` which provides 2 utilities:
 
@@ -114,11 +114,11 @@ const BooksContainer = props => {
 };
 ```
 
-See the complete React integration [steps here](docs/react.md).
+See the complete React integration [steps here](https://github.com/uralys/taverne/blob/master/docs/react.md).
 
-You can "pour" specific parts of the state, to allow [accurate local rendering](docs/react.md#-advanced-usage) from your global app state.
+You can "pour" specific parts of the state, to allow [accurate local rendering](https://github.com/uralys/taverne/blob/master/docs/react.md#-advanced-usage) from your global app state.
 
-## 🔆 Middlewares
+## Middlewares
 
 You can create more generic middlewares to operate any actions:
 
@@ -135,9 +135,9 @@ Then instanciate `La Taverne` with your list of middlewares as 2nd parameter:
 const {dispatch, store} = createLaTaverne(reducers, [customMiddleware]);
 ```
 
-example: plugging the [redux devtools extension](https://github.com/reduxjs/redux-devtools) with this [middleware](src/middlewares/devtools.js)
+example: plugging the [redux devtools extension](https://github.com/reduxjs/redux-devtools) with this [middleware](https://github.com/uralys/taverne/blob/master/src/middlewares/devtools.js)
 
-## 🐛 Redux devtools
+## Redux devtools
 
 ```js
 import createLaTaverne from 'taverne';
@@ -146,19 +146,3 @@ import books from './features/books/reducer';
 
 const {dispatch, store} = createLaTaverne({books}, [devtools]);
 ```
-
-## level 2.a
-
-### level 2.1
-
-#### level 2.1.1
-
-#### level 2.1.2
-
-#### level 2.1.3
-
-### level 2.2
-
-### level 2.3
-
-## level 2.b

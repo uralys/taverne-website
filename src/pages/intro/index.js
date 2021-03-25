@@ -1,15 +1,15 @@
 import React from 'react';
-
-import Markdown from '../components/markdown';
-import sampleMd from '../resources/home/sample.md';
-import pitchIntroMd from '../resources/home/pitch-intro.md';
-import pitchDetailsMd from '../resources/home/pitch-details.md';
 import styled from 'styled-components';
-
 import createLaTaverne from 'taverne';
 import {Taverne, useTaverne} from 'taverne/hooks';
-import {primary} from '../style/colors';
-import {device} from '../style/breakpoints';
+
+import Markdown from '../../components/markdown';
+import {primary} from '../../style/colors';
+import {device} from '../../style/breakpoints';
+
+import sampleMd from './sample.md';
+import pitchIntroMd from './pitch-intro.md';
+import pitchDetailsMd from './pitch-details.md';
 
 // -----------------------------------------------------------------------------
 

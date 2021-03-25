@@ -6,9 +6,9 @@ import styled from 'styled-components';
 
 // -----------------------------------------------------------------------------
 
+import Intro from './pages/intro';
 import Demo from './pages/demo-rgb';
-import Doc from './pages/docs';
-import Home from './pages/home';
+import GettingStarted from './pages/docs/getting-started';
 import {device} from './style/breakpoints';
 
 // -----------------------------------------------------------------------------
@@ -30,12 +30,18 @@ const $View = styled.div`
 
 // -----------------------------------------------------------------------------
 
+const intro = '/';
+const gettingStarted = '/getting-started';
+const demo = '/demo';
+
+// -----------------------------------------------------------------------------
+
 const Views = () => (
   <$View>
     <Switch>
-      <Route path="/" exact component={Home} />
-      <Route path="/doc" exact component={Doc} />
-      <Route path="/demo" exact component={Demo} />
+      <Route path={intro} exact component={Intro} />
+      <Route path={gettingStarted} exact component={GettingStarted} />
+      <Route path={demo} exact component={Demo} />
     </Switch>
   </$View>
 );
@@ -43,3 +49,9 @@ const Views = () => (
 // -----------------------------------------------------------------------------
 
 export default Views;
+
+export const PATHS = {
+  intro,
+  gettingStarted,
+  demo
+};
