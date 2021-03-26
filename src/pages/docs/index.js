@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import Navigation from './navigation';
 import GettingStarted from './getting-started';
 import ReactIntegration from './react';
+import {device} from '../../style/breakpoints';
 
 // -----------------------------------------------------------------------------
 
@@ -25,6 +26,16 @@ const $View = styled.div`
   box-sizing: border-box;
 `;
 
+const $DocView = styled.div`
+  width: 100%;
+
+  @media ${device.tablet} {
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+  }
+`;
+
 // -----------------------------------------------------------------------------
 
 const Documentation = props => {
@@ -32,18 +43,20 @@ const Documentation = props => {
   return (
     <$View>
       <Navigation />
-      <Switch>
-        <Route
-          path={`${path}${gettingStarted}`}
-          exact
-          component={GettingStarted}
-        />
-        <Route
-          path={`${path}${reactIntegration}`}
-          exact
-          component={ReactIntegration}
-        />
-      </Switch>
+      <$DocView>
+        <Switch>
+          <Route
+            path={`${path}${gettingStarted}`}
+            exact
+            component={GettingStarted}
+          />
+          <Route
+            path={`${path}${reactIntegration}`}
+            exact
+            component={ReactIntegration}
+          />
+        </Switch>
+      </$DocView>
     </$View>
   );
 };

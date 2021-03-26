@@ -1,8 +1,8 @@
 // -----------------------------------------------------------------------------
 
-import React from 'react';
-import {NavLink, useHistory} from 'react-router-dom';
-import styled from 'styled-components';
+import React, {useEffect, useState} from 'react';
+import {NavLink, useHistory, useLocation} from 'react-router-dom';
+import styled, {css} from 'styled-components';
 import {DOC_PATHS} from '../pages/docs';
 import {device} from '../style/breakpoints';
 import {primary} from '../style/colors';
@@ -88,10 +88,30 @@ const $Links = styled.div`
   }
 `;
 
+const $NavLink = styled(NavLink)`
+  &&& {
+    ${props =>
+      props.active &&
+      css`
+        background-color: ${primary};
+        color: #fff;
+        border-radius: 5px;
+        padding: 6px 10px;
+      `}
+  }
+`;
+
 // -----------------------------------------------------------------------------
 
 const Header = () => {
   const history = useHistory();
+  const location = useLocation();
+  const [docActive, setDocActive] = useState(false);
+
+  useEffect(() => {
+    const onDoc = location.pathname.indexOf('/documentation/') !== -1;
+    setDocActive(onDoc);
+  }, [location]);
 
   const openIntro = () => {
     if (history.location.pathname !== PATHS.intro) {
@@ -113,9 +133,9 @@ const Header = () => {
           <NavLink exact to={PATHS.demo}>
             Demo
           </NavLink>
-          <NavLink exact to={DOC_PATHS.gettingStarted}>
+          <$NavLink to={DOC_PATHS.gettingStarted} active={+docActive}>
             Documentation
-          </NavLink>
+          </$NavLink>
           <a href="https://github.com/uralys/taverne" target="__blank">
             Github
           </a>
