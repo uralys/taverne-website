@@ -1,12 +1,13 @@
 // -----------------------------------------------------------------------------
 
 import React from 'react';
-import {NavLink, useLocation} from 'react-router-dom';
+import {Link, NavLink, useLocation} from 'react-router-dom';
 import styled, {css} from 'styled-components';
 
 // -----------------------------------------------------------------------------
 
 import {device} from '../../style/breakpoints';
+import {primary} from '../../style/colors';
 import Markdown from '../../components/markdown';
 
 // -----------------------------------------------------------------------------
@@ -30,6 +31,44 @@ const $Navigation = styled.div`
 
   @media ${device.laptop} {
     flex: 0 0 240px;
+    padding-top: 80px;
+    padding-right: 10px;
+    box-sizing: border-box;
+  }
+
+  a {
+    color: rgb(26, 26, 26);
+    font-weight: 200;
+    font-style: normal;
+
+    span {
+      margin-top: 15px;
+      display: block;
+      padding-left: 6px;
+    }
+
+    &.active {
+      span {
+        border-left: 2px solid ${primary};
+      }
+
+      font-weight: 500;
+      color: ${primary};
+    }
+  }
+`;
+
+const $Topic = styled.div`
+  ul,
+  li {
+    list-style: none;
+    margin: 0;
+    font-size: 15px;
+  }
+
+  ul {
+    padding-left: 20px;
+    padding-bottom: 20px;
   }
 `;
 
@@ -65,14 +104,14 @@ const Navigation = props => {
   return (
     <$Navigation>
       {topics.map(({name, path, toc}) => (
-        <div key={path}>
+        <$Topic key={path}>
           <NavLink exact to={path}>
-            {name}
+            <span>{name}</span>
           </NavLink>
           <$TOC show={pathname === path}>
             <Markdown markdown={toc} />
           </$TOC>
-        </div>
+        </$Topic>
       ))}
     </$Navigation>
   );
