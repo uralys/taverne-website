@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------------
 
 import React, {useEffect, useState} from 'react';
-import {NavLink, Redirect, useHistory, useLocation} from 'react-router-dom';
+import {NavLink, useHistory, useLocation} from 'react-router-dom';
 import styled, {css} from 'styled-components';
 import {DOC_PATHS} from '../pages/docs';
 import {device} from '../style/breakpoints';
