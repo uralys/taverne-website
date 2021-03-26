@@ -30,7 +30,7 @@
     "chalk": "^4.1.0",
     "connect-history-api-fallback": "^1.6.0",
     "doctoc": "^2.0.0",
-    "esbuild": "^0.10.0",
+    "esbuild": "^0.10.1",
     "esbuild-plugin-svgr": "^0.0.1",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
