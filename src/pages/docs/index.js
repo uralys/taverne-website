@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------------
 
 import React from 'react';
-import {Route, Switch} from 'react-router';
+import {Redirect, Route, Switch} from 'react-router';
 import styled from 'styled-components';
 
 import Navigation from './navigation';
@@ -55,6 +55,9 @@ const Documentation = props => {
             exact
             component={ReactIntegration}
           />
+          <Route exact path={path}>
+            <Redirect to={`${path}${gettingStarted}`} />
+          </Route>
         </Switch>
       </$DocView>
     </$View>
