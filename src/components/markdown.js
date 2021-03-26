@@ -38,6 +38,22 @@ const $Markup = styled.div`
     padding-top: 70px;
     margin-top: -50px;
   }
+
+  details {
+    z-index: 2;
+    cursor: pointer;
+    background-color: #ddd;
+    border-radius: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+
+    summary {
+      height: 50px;
+      display: flex;
+      align-items: center;
+    }
+  }
 `;
 
 const Markdown = ({markdown}) => {

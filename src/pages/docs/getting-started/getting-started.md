@@ -1,12 +1,12 @@
 # Getting started
 
-## Install
+## [Install](#install)
 
 ```sh
 > npm i --save taverne
 ```
 
-## Instanciate your store
+## [Instanciate your store](#instanciate-your-store)
 
 Once your reducers are ready, you can instanciate your `store` and `dispatch`:
 
@@ -23,7 +23,7 @@ const {dispatch, store} = createLaTaverne({
 });
 ```
 
-## Create a reducer
+## [Create a reducer](#create-a-reducer)
 
 A "Reducer" is an `initialState` and a list of `reactions`.
 
@@ -46,7 +46,7 @@ export default {
 export {ADD_BOOK};
 ```
 
-## Reactions
+## [Reactions](#reactions)
 
 - A `reaction` will be triggered when an action is dispatched with `action.type` === `on`.
 
@@ -81,7 +81,7 @@ const doSomethingInThisStore = {
 
   Then `reduce` will be called with the result once it's done.
 
-## React integration
+## [React integration](#react-integration)
 
 `La Taverne` has a context Provider `<Taverne>` which provides 2 utilities:
 
@@ -118,7 +118,7 @@ See the complete React integration [steps here](https://github.com/uralys/tavern
 
 You can "pour" specific parts of the state, to allow [accurate local rendering](https://github.com/uralys/taverne/blob/master/docs/react.md#-advanced-usage) from your global app state.
 
-## Middlewares
+## [Middlewares](#middlewares)
 
 You can create more generic middlewares to operate any actions:
 
@@ -137,7 +137,7 @@ const {dispatch, store} = createLaTaverne(reducers, [customMiddleware]);
 
 example: plugging the [redux devtools extension](https://github.com/reduxjs/redux-devtools) with this [middleware](https://github.com/uralys/taverne/blob/master/src/middlewares/devtools.js)
 
-## Redux devtools
+## [Redux devtools](#redux-devtools)
 
 ```js
 import createLaTaverne from 'taverne';

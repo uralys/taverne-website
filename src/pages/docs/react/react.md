@@ -1,6 +1,6 @@
 # React example
 
-## setup
+## [Setup](#setup)
 
 Here is the way to follow to setup `La Taverne` on your app:
 
@@ -10,7 +10,7 @@ Here is the way to follow to setup `La Taverne` on your app:
 - 4: `dispatch` actions to trigger `reactions`.
 
 <details>
-<summary>🔍 Illustration</summary>
+ <summary>🔍 Illustration</summary>
 
 In the following, let's illustrate how to use `Taverne` with:
 
@@ -22,7 +22,7 @@ Illustration will be marked with 🔍
 
 </details>
 
-## [create a reducer](#create-a-reducer)
+## [Create a reducer](#create-a-reducer)
 
 You'll have to define a reducer with
 
@@ -85,7 +85,7 @@ export {FETCH_ITEMS};
 
 </details>
 
-## 🐿️ setup the \<Taverne> provider
+## [Provider](#setup-the-provider)
 
 Once all reducers are ready, instanciate and pass `{dispatch, store}` to the `<Taverne>` provider.
 
@@ -113,11 +113,16 @@ render(
 );
 ```
 
-## Pouring your global state to your containers
+## [Pouring](#pouring)
 
-### storeState ➡️ props
+`La Taverne` pours data for you by:
+
+- Extracting your content from your global state
+- (Only when there is an update:) notifying and giving it to your containers
 
 The `pour` hook allows to listen to changes in your global state, use the part you need in your local props.
+
+That's the `mapStateToProps` if you come from Redux.
 
 🔍 Here is the example for our illustrating `items`:
 
@@ -137,7 +142,7 @@ const ItemsContainer = props => {
 
 To listen to specific changes in the global state, and update your local props only on those changes, you can use many kinds of parameters to `pour()` (see the [advanced section](#-advanced-usage)).
 
-## 📡 dispatching actions
+## [Dispatching actions](#dispatching-actions)
 
 Use [`prop drilling`](https://kentcdodds.com/blog/prop-drilling) from your containers to your components: pass functions dispatching the actions
 
@@ -158,9 +163,9 @@ const ItemsContainer = props => {
 };
 ```
 
-## Advanced usage
+## [Advanced usage](#advanced-usage)
 
-### local rendering
+### [Local rendering](#local-rendering)
 
 The whole point of `Taverne` is to be able to perform extremely local rendering.
 
@@ -181,7 +186,7 @@ This way, on every store update, specific props will be extracted for the compon
 
 If those props don't change, the store won't notify your container, preventing a re-rendering: this will allow accurate local rendering from a global app state.
 
-### more pouring facilities
+### [Many ways to pour](#many-ways-to-pour)
 
 You can map a many props in one single pouring:
 
