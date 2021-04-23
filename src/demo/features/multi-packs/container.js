@@ -29,9 +29,11 @@ const SquareContainer = props => {
       onClick={() =>
         dispatch({
           type: TOGGLE_SQUARE_IN_MULTI_PACKS,
-          packNum,
-          rgbNum,
-          color
+          payload: {
+            packNum,
+            rgbNum,
+            color
+          }
         })
       }
     />

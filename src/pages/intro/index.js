@@ -94,7 +94,7 @@ const Demo = () => {
     }
   };
 
-  const {dispatch, store} = createLaTaverne({
+  const {dispatch, taverne} = createLaTaverne({
     counter: {
       initialState: {clickCount: 0},
       reactions: [onIncrement]
@@ -102,7 +102,7 @@ const Demo = () => {
   });
 
   return (
-    <Taverne dispatch={dispatch} store={store}>
+    <Taverne dispatch={dispatch} taverne={taverne}>
       <App />
     </Taverne>
   );

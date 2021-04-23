@@ -28,7 +28,7 @@ const SquareContainer = props => {
       onClick={() =>
         dispatch({
           type: TOGGLE_SINGLE_RGB_SQUARE,
-          color
+          payload: {color}
         })
       }
     />
