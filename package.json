@@ -3,46 +3,31 @@
   "version": "0.0.7",
   "description": "⛵ demonstrating how to use La Taverne",
   "scripts": {
-    "prebuild": "rm -rf ./dist && node scripts/generate-toc.js",
-    "build": "node scripts/build.js",
-    "start:dev": "node scripts/dev-server.js",
+    "prebuild": "reactor toc",
+    "build": "reactor build",
+    "start:dev": "reactor toc && reactor start",
     "ncu": "npm-check-updates",
     "lint": "eslint src",
-    "test": "ava",
     "release": "npm run build && surge public/ --domain taverne.surge.sh"
   },
   "license": "MIT",
   "dependencies": {
-    "marked": "^2.0.1",
+    "marked": "^2.0.3",
     "prismjs": "^1.23.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
-    "styled-components": "^5.2.1",
-    "taverne": "^1.16.9"
+    "styled-components": "^5.2.3",
+    "taverne": "^1.25.1"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.13.12",
-    "@babel/preset-react": "^7.12.13",
-    "@babel/register": "^7.13.8",
-    "ava": "^3.15.0",
+    "@uralys/reactor": "^1.0.16",
     "babel-eslint": "^10.0.3",
-    "chalk": "^4.1.0",
-    "connect-history-api-fallback": "^1.6.0",
-    "doctoc": "^2.0.0",
-    "esbuild": "^0.10.1",
-    "esbuild-plugin-svgr": "^0.0.1",
-    "eslint": "^7.22.0",
-    "eslint-config-prettier": "^8.1.0",
+    "eslint": "^7.24.0",
+    "eslint-config-prettier": "^8.2.0",
     "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.3.1",
-    "eslint-plugin-react": "^7.23.1",
-    "live-server": "^1.2.1",
-    "mkdirp": "^1.0.4",
-    "npm-check-updates": "^11.3.0",
-    "rimraf": "^3.0.2",
-    "surge": "^0.22.1"
+    "eslint-plugin-react": "^7.23.2",
+    "npm-check-updates": "^11.5.1",
+    "surge": "^0.23.0"
   }
 }

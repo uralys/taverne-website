@@ -1,7 +1,7 @@
 import React from 'react';
 import createLaTaverne from 'taverne';
 import {Taverne} from 'taverne/hooks';
-import {devtools} from 'taverne/middlewares';
+import {createDevtools} from 'taverne/middlewares';
 
 // -----------------------------------------------------------------------------
 
@@ -14,7 +14,9 @@ import App from './app';
 // -----------------------------------------------------------------------------
 
 const Demo = ({resources}) => {
-  const {dispatch, store} = createLaTaverne(
+  const devtools = createDevtools();
+
+  const {dispatch, taverne} = createLaTaverne(
     {
       singlePack,
       singleRGB,
@@ -25,7 +27,7 @@ const Demo = ({resources}) => {
   );
 
   return (
-    <Taverne dispatch={dispatch} store={store}>
+    <Taverne dispatch={dispatch} taverne={taverne}>
       <App resources={resources} />
     </Taverne>
   );

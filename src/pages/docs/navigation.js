@@ -13,8 +13,8 @@ import Markdown from '../../components/markdown';
 // -----------------------------------------------------------------------------
 
 import {DOC_PATHS} from '.';
-import gettingStartedTOC from '../../../tocs/getting-started.toc.md';
-import reactTOC from '../../../tocs/react.toc.md';
+import gettingStartedTOC from '../../../tocs/toc.getting-started.md';
+import reactTOC from '../../../tocs/toc.react.md';
 
 // -----------------------------------------------------------------------------
 

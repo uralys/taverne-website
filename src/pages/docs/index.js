@@ -5,9 +5,10 @@ import {Redirect, Route, Switch} from 'react-router';
 import styled from 'styled-components';
 
 import Navigation from './navigation';
-import GettingStarted from './getting-started';
-import ReactIntegration from './react';
+import gettingStartedMd from './getting-started.md';
+import reactIntegrationMd from './react.md';
 import {device} from '../../style/breakpoints';
+import Markdown from '../../components/markdown';
 
 // -----------------------------------------------------------------------------
 
@@ -48,12 +49,12 @@ const Documentation = props => {
           <Route
             path={`${path}${gettingStarted}`}
             exact
-            component={GettingStarted}
+            component={() => <Markdown markdown={gettingStartedMd} />}
           />
           <Route
             path={`${path}${reactIntegration}`}
             exact
-            component={ReactIntegration}
+            component={() => <Markdown markdown={reactIntegrationMd} />}
           />
           <Route exact path={path}>
             <Redirect to={`${path}${gettingStarted}`} />
