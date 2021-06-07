@@ -2,7 +2,7 @@
 
 This repo demonstrates how to use `La Taverne`
 
-- Try live on <https://taverne.surge.sh/>
+- Try live on <https://taverne.uralys.com/>
 - [La Taverne](https://github.com/uralys/taverne)
 
 ## 🧑‍🚀 dev
