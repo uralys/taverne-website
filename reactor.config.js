@@ -13,10 +13,10 @@ module.exports = {
     publicPath: './public',
     hostname: 'https://taverne.uralys.com',
     links: [
-      {url: '/', lastmod: new Date()},
+      {url: '', lastmod: new Date()},
       {url: '/demo', lastmod: new Date()},
-      {url: '/documentation/getting-started/', lastmod: new Date()},
-      {url: '/documentation/react/', lastmod: new Date()}
+      {url: '/documentation/getting-started', lastmod: new Date()},
+      {url: '/documentation/react', lastmod: new Date()}
     ]
   }
 };
