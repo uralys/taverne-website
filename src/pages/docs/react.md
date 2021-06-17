@@ -5,7 +5,7 @@
 Here is the way to follow to setup `La Taverne` on your app:
 
 - 1: Write `reactions`: the way your store must reduce actions.
-- 2: Pass your instance `{dispatch, store}` through the provider `<Taverne>`.
+- 2: Pass your instance `{dispatch, taverne}` through the provider `<Taverne>`.
 - 3: `pour` data in your containers
 - 4: `dispatch` actions to trigger `reactions`.
 
@@ -22,9 +22,9 @@ Illustration will be marked with 🔍
 
 </details>
 
-## [Create a reducer](#create-a-reducer)
+## [Create a barrel](#create-a-barrel)
 
-You'll have to define a reducer with
+You'll have to define a `barrel` with
 
 - an initialState,
 - and a list of reactions.
@@ -38,7 +38,7 @@ const items = {
 export default items;
 ```
 
-You should use one reducer for each feature.
+You should use one `barrel` for each feature.
 
 `La Taverne` will:
 
@@ -54,20 +54,24 @@ You should use one reducer for each feature.
 Here is the example for our illustrating `items`
 
 ```js
-/* ./features/items/store.js */
-import apiCall from './fetch-items.js';
+/* ./actions/items.js */
+export const FETCH_ITEMS = 'FETCH_ITEMS';
+```
 
-const FETCH_ITEMS = 'FETCH_ITEMS';
+```js
+/* ./barrels/items.js */
+import {FETCH_ITEMS} from '../actions/items.js';
+import apiCall from './fetch-items.js';
 
 const initialState = {items: null};
 
 const fetchItems = {
   on: FETCH_ITEMS,
-  perform: async (parameters, dispatch, getState) => {
+  perform: async (payload, dispatch, getState) => {
     // This function will be called whenever {type:FETCH_ITEMS} is dispatched.
     // `getState` is provided here for convenience, to access the current store state.
 
-    const items = await apiCall(parameters);
+    const items = await apiCall(payload);
     return items;
   },
   reduce: (draft, payload) => {
@@ -80,14 +84,13 @@ const fetchItems = {
 const reactions = [fetchItems];
 
 export default {initialState, reactions};
-export {FETCH_ITEMS};
 ```
 
 </details>
 
 ## [Provider](#setup-the-provider)
 
-Once all reducers are ready, instanciate and pass `{dispatch, store}` to the `<Taverne>` provider.
+Once all reducers are ready, instanciate and pass `{dispatch, taverne}` to the `<Taverne>` provider.
 
 🔍 Example:
 
@@ -97,16 +100,18 @@ import React from 'react';
 import {render} from 'react-dom';
 import {Taverne} from 'taverne/hooks';
 
-import items from './features/items/reducer.js';
-import anyOtherStuff from './features/whatever/reducer.js';
+import items from './barrles/items.js';
+import anyOtherStuff from './barrels/whatever.js';
 
-const {dispatch, store} = createLaTaverne({
+const barrels = {
   items,
   anyOtherStuff
-});
+};
+
+const {dispatch, taverne} = createLaTaverne(barrels);
 
 render(
-  <Taverne dispatch={dispatch} store={store}>
+  <Taverne dispatch={dispatch} taverne={taverne}>
     <App />
   </Taverne>,
   container
@@ -117,8 +122,8 @@ render(
 
 `La Taverne` pours data for you by:
 
-- Extracting your content from your global state
-- (Only when there is an update:) notifying and giving it to your containers
+- Extracting your content from your global state,
+- (Only when there is an update:) notifying and giving it to your containers.
 
 The `pour` hook allows to listen to changes in your global state, use the part you need in your local props.
 
@@ -147,7 +152,7 @@ To listen to specific changes in the global state, and update your local props o
 Use [`prop drilling`](https://kentcdodds.com/blog/prop-drilling) from your containers to your components: pass functions dispatching the actions
 
 ```js
-import {SELECT_ITEM} from './features/items/reducer.js';
+import {SELECT_ITEM} from './actions/items.js';
 
 const ItemsContainer = props => {
   const {dispatch} = useTaverne();
@@ -215,4 +220,4 @@ const BookContainer = props => {
 };
 ```
 
-cheers 🍻
+Cheers 🍻 !

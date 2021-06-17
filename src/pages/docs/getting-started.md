@@ -6,29 +6,31 @@
 > npm i --save taverne
 ```
 
-## [Instanciate your store](#instanciate-your-store)
+## [Instanciate your Taverne](#instanciate-your-taverne)
 
-Once your reducers are ready, you can instanciate your `store` and `dispatch`:
+Once your `barrels` are ready, you can instanciate your `taverne` and `dispatch`:
 
 ```js
 import createLaTaverne from 'taverne';
-import books from './features/books/reducer';
-import potions from './features/potions/reducer';
-import handcrafts from './features/handcrafts/reducer';
+import books from './barrels/books';
+import potions from './barrels/potions';
+import handcrafts from './barrels/handcrafts';
 
-const {dispatch, store} = createLaTaverne({
+const barrels = {
   books,
   potions,
   handcrafts
-});
+};
+
+const {dispatch, taverne} = createLaTaverne(barrels);
 ```
 
-## [Create a reducer](#create-a-reducer)
+## [Create a barrel](#create-a-barrel)
 
-A "Reducer" is an `initialState` and a list of `reactions`.
+A "Barrel" is an `initialState` and a list of `reactions`.
 
 ```js
-const ADD_BOOK = 'ADD_BOOK';
+import {ADD_BOOK} from '../actions/shelves';
 
 const addBook = {
   on: ADD_BOOK,
@@ -42,8 +44,6 @@ export default {
   initialState: {entities: []},
   reactions: [addBook]
 };
-
-export {ADD_BOOK};
 ```
 
 ## [Reactions](#reactions)
@@ -51,23 +51,33 @@ export {ADD_BOOK};
 - A `reaction` will be triggered when an action is dispatched with `action.type` === `on`.
 
 ```js
-const doSomethingInThisStore = {
+const doSomethingInThisBarrel = {
   on: 'ACTION_TYPE',
-  reduce: (state, payload) => {
-    /*
-      Just update the state with your payload.
-      Here, `state` is the draftState used by `Immer.produce`
-      You store will then record your next immutable state.
-    */
-    state.foo = 'bar';
-  },
-  perform: (parameters, dispatch, getState) => {
+  perform: (payload, dispatch, getState) => {
     /*
       Optional sync or async function.
       It will be called before `reduce`
 
-      When it is done, reduce will receive the result in
+      When it is done, reduce will receive the returned result in
       the `payload` parameter.
+
+      You can `dispatch` next steps from here as well
+    */
+  },
+  reduce: (state, payload) => {
+    /*
+      Just update the state with your payload.
+      Here, `state` is the draftState used by `Immer.produce`
+      You taverne will then record your next immutable state nested in this barrel.
+    */
+    state.foo = 'bar';
+  },
+  after: (payload, dispatch, getState) => {
+    /*
+      Optional sync or async function.
+      It will be called after `reduce`.
+
+      payload here is the same one received by reduce
 
       You can `dispatch` next steps from here as well
     */
@@ -77,9 +87,11 @@ const doSomethingInThisStore = {
 
 - `reduce` is called using `Immer`, so mutate the `state` exactly as you would with the `draftState` parameter in [produce](https://immerjs.github.io/immer/docs/produce).
 
-- If you have some business to do before reducing, for example calling an API, use the `perform` function, either `sync` or `async`.
+- If you have some business to do **before** reducing, for example calling an API, use the `perform` function, either `sync` or `async`.
 
-  Then `reduce` will be called with the result once it's done.
+Then `reduce` will be called with the result once it's done.
+
+- If you have some business to do **after** reducing, use the `after` function, either `sync` or `async`.
 
 ## [React integration](#react-integration)
 
@@ -95,7 +107,7 @@ import {render} from 'react-dom';
 import {Taverne} from 'taverne/hooks';
 
 render(
-  <Taverne dispatch={dispatch} store={store}>
+  <Taverne dispatch={dispatch} taverne={taverne}>
     <App id={id} />
   </Taverne>,
   container
@@ -123,16 +135,20 @@ You can "pour" specific parts of the state, to allow [accurate local rendering](
 You can create more generic middlewares to operate any actions:
 
 ```js
-const customMiddleware = {
-  onCreate: (dispatch, store) => {},
-  onDispatch: (action, dispatch, getState) => {}
+const customMiddlewareCreator = taverne => {
+  const currentState = taverne.getState();
+
+  return {
+    onCreate: (dispatch, taverne) => {},
+    onDispatch: (action, dispatch, getState) => {}
+  };
 };
 ```
 
 Then instanciate `La Taverne` with your list of middlewares as 2nd parameter:
 
 ```js
-const {dispatch, store} = createLaTaverne(reducers, [customMiddleware]);
+const {dispatch, taverne} = createLaTaverne(barrels, [customMiddlewareCreator]);
 ```
 
 example: plugging the [redux devtools extension](https://github.com/reduxjs/redux-devtools) with this [middleware](https://github.com/uralys/taverne/blob/master/src/middlewares/devtools.js)
@@ -141,8 +157,22 @@ example: plugging the [redux devtools extension](https://github.com/reduxjs/redu
 
 ```js
 import createLaTaverne from 'taverne';
-import {devtools} from 'taverne/middlewares';
-import books from './features/books/reducer';
+import {createDevtools} from 'taverne/middlewares';
+import books from './barrels/books';
 
-const {dispatch, store} = createLaTaverne({books}, [devtools]);
+const devtools = createDevtools();
+const {dispatch, taverne} = createLaTaverne({books}, [devtools]);
+```
+
+For performance, you can use options to hide huge part of the state you don't need to debug
+
+```js
+const devtools = createDevtools({
+    applyStateFiltering: state => ({
+      ...state,
+      hugeParent: {
+        ...state.hugeParent,
+        hugeChild: '<HUGE>'
+      }
+    })
 ```
