@@ -87,9 +87,7 @@ const doSomethingInThisBarrel = {
 
 - `reduce` is called using `Immer`, so mutate the `state` exactly as you would with the `draftState` parameter in [produce](https://immerjs.github.io/immer/docs/produce).
 
-- If you have some business to do **before** reducing, for example calling an API, use the `perform` function, either `sync` or `async`.
-
-Then `reduce` will be called with the result once it's done.
+- If you have some business to do **before** reducing, for example calling an API, use the `perform` function, either `sync` or `async`. Then `reduce` will be called with the result once it's done.
 
 - If you have some business to do **after** reducing, use the `after` function, either `sync` or `async`.
 
